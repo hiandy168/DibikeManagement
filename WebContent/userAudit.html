@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="./css/user.css">
+        <script type="text/javascript" src="./js/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/html5shiv.js"></script>
+        <script type="text/javascript" src="./js/size.js"></script>
+        <script type="text/javascript" src="./js/ng/angular.min.js"></script>
+        <script type="text/javascript">
+        	var vm = angular.module('userAudit',[]);
+		</script>
+        <script type="text/javascript" src="./js/component/loginout.js"></script>
+        <script type="text/javascript" src="./js/user/userAudit.js"></script>
+	</head>
+    <body ng-app='userAudit'>
+        <header class="header" ng-include="'./component/header.html'" ng-controller='logList'></header>
+        <section class="main">
+            <div class="container">
+               <section class="pic_box" ng-controller='audit'>
+               		<input type="button" class="gohistory" value="返回" ng-click="gohistory()"/>
+               		<div class="pic">
+               			<img ng-src="{{pic.certificate_front}}" />
+               			<img ng-src="{{pic.hand_certificate}}" />
+               		</div>
+               		<div class="suerr">
+               			<input type="button" value="通过" ng-click="pass()"/>
+						<input type="button" value="不通过" ng-click="noPass()"/>
+					</div>
+               </section>
+			</div>
+        </section>
+        <footer class="footer" ng-include="'./component/footer.html'"></footer>
+    </body>
+</html>

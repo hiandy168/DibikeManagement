@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="./css/user.css">
+        <script type="text/javascript" src="./js/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/html5shiv.js"></script>
+        <script type="text/javascript" src="./js/size.js"></script>
+        <script type="text/javascript" src="./js/ng/angular.min.js"></script>
+       	<script type="text/javascript">
+        	var vm=angular.module('userQuery',[]).run(function($rootScope){
+        		$rootScope.userQuery = true;
+        	});
+        </script>
+        <script type="text/javascript" src="./js/component/loginout.js"></script>
+        <script type="text/javascript" src="./js/user/userQuery.js"></script>
+	</head>
+    <body ng-app='userQuery'>
+        <header class="header" ng-include="'./component/header.html'" ng-controller='logList'></header>
+        <section class="main">
+            <div class="container">
+                <aside class="menu_box" ng-include="'./component/menu.html'"></aside>
+                <section class="section-box" ng-controller="userphone">
+                    <div class="mp_news__box">
+                        <div class="title_bar">用户查询</div>
+                        <div class="mp_news__box">
+	                        <label class="query_label">
+	                           	<div class="key">手机号：</div>
+	                            <input type="text" class="phone" placeholder="请输入手机号码" ng-keyup="" >
+	                            <input type="button" value="查询" class="query" ng-click="query()">
+	                        </label>
+	                        <div class="userList">
+	       						<ul class="useritem">
+									<li>姓名：
+										<span ng-bind="name"></span>
+									</li>
+								</ul>                 	
+	                        </div>
+                       	</div>
+					</div>
+                </section>
+            </div>
+        </section>
+        <footer class="footer" ng-include="'./component/footer.html'"></footer>
+    </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="./css/home.css">
+        <script type="text/javascript" src="./js/jquery.min.js"></script>
+       	<script type="text/javascript" src="./js/html5shiv.js"></script>
+        <script type="text/javascript" src="./js/angular.min.js"></script>
+        <script type="text/javascript" src="./js/echarts.min.js"></script>
+        <script type="text/javascript" src="./js/home/home.js"></script>
+    </head>
+    <body ng-app='homeApp' ng-controller='homeList'>
+        <header class="header" ng-include="'./component/header.html'"></header>
+        <section class="main">
+            <div class="container" >
+                <aside class="menu_box" ng-include="'./component/left.html'"></aside>
+                <section class="section-box">
+                    <div class="mp_news__box">
+                        <div class="title_bar">系统公告</div>
+                        <ul class="mp_news_list">
+                            <li class="mp_news_item">
+                                <a href="javascript:">
+                                    <strong>贝庆单车开放公测</strong>
+                                    <span>2016-11-20</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div id="main" style="height:400px;"></div>
+                    </div>
+                    <nav class="page">
+                        <ul class="pagination">
+                            <li class="disabled"><a href="#">&laquo;</a></li>
+                            <li class="active"><a href="javascript:">1</a></li>
+                            <li><a href="javascript:">2</a></li>
+                            <li><a href="javascript:">3</a></li>
+                            <li><a href="javascript:">4</a></li>
+                            <li><a href="javascript:">5</a></li>
+                            <li><a href="#">&raquo;</a></li>
+                        </ul>
+                    </nav>
+                </section>
+            </div>
+        </section>
+        <footer class="footer" ng-include="'./component/footer.html'"></footer>
+        <script type="text/javascript">
+        
+        var myChart = echarts.init(document.getElementById('main'));
+
+        option = {
+        	    title: {
+        	        text: '折线图堆叠'
+        	    },
+        	    tooltip: {
+        	        trigger: 'axis'
+        	    },
+        	    legend: {
+        	        data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+        	    },
+        	    grid: {
+        	        left: '3%',
+        	        right: '4%',
+        	        bottom: '3%',
+        	        containLabel: true
+        	    },
+        	    toolbox: {
+        	        feature: {
+        	            saveAsImage: {}
+        	        }
+        	    },
+        	    xAxis: {
+        	        type: 'category',
+        	        boundaryGap: false,
+        	        data: ['周一','周二','周三','周四','周五','周六','周日']
+        	    },
+        	    yAxis: {
+        	        type: 'value'
+        	    },
+        	    series: [
+        	        {
+        	            name:'邮件营销',
+        	            type:'line',
+        	            stack: '总量',
+        	            data:[120, 132, 101, 134, 90, 230, 210]
+        	        },
+        	        {
+        	            name:'联盟广告',
+        	            type:'line',
+        	            stack: '总量',
+        	            data:[220, 182, 191, 234, 290, 330, 310]
+        	        },
+        	        {
+        	            name:'视频广告',
+        	            type:'line',
+        	            stack: '总量',
+        	            data:[150, 232, 201, 154, 190, 330, 410]
+        	        },
+        	        {
+        	            name:'直接访问',
+        	            type:'line',
+        	            stack: '总量',
+        	            data:[320, 332, 301, 334, 390, 330, 320]
+        	        },
+        	        {
+        	            name:'搜索引擎',
+        	            type:'line',
+        	            stack: '总量',
+        	            data:[820, 932, 901, 934, 1290, 1330, 1320]
+        	        }
+        	    ]
+        	};
+        
+        myChart.setOption(option);
+    </script>
+    </body>
+</html>

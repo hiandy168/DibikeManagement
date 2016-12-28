@@ -1,0 +1,14 @@
+<div class="container" >
+    <a class="logo" href="./index.html">
+       <img src="./images/logo.png"/>
+    </a>
+    <a class="text" href="./index.html">贝庆  网站管理后台</a>
+    <div class="pull-right">
+        <a href="javascript:" class="people" id="preview">
+            <img src="./images/1.jpg" />
+        </a>
+        <a href="./userInfo.html" class="name" ng-bind="username"></a>
+        <span class="name" ng-bind="greet"></span>
+        <a class="logout" href="javascript:" ng-click='loginout()' ng-bind="'退出'"></a>
+    </div>
+</div>

@@ -1,0 +1,104 @@
+@import './variables.less';
+@import './mixin.less';
+@import './public.less';
+
+.section-box{
+    width: 970px;
+    float: right;
+    overflow: hidden;
+    background: @background;
+    padding: 20px;
+
+    >.jobTable{
+		border-top: 1px solid #000;
+        border-left: 1px solid #000;
+
+
+        tr{
+
+            border-bottom: 1px solid #000;
+            line-height: 34px;
+            height: 34px;
+
+            th{
+                width: 300px;
+                text-align: center;
+                color: #222;
+                background: #109ba3;
+                border-right: 1px solid #000;
+            }
+            td{
+                width: 300px;
+                text-align: center;
+                color: #222;
+                border-right: 1px solid #000;
+                background: #eb6588;
+            }
+        }
+    }
+
+    .mp_news__box{
+        overflow: hidden;
+        border: 1px solid #e7e7eb;
+
+        .title_bar{
+            font-weight: 400;
+            line-height:40px;
+            background: #f4f5f9;
+            padding: 0 20px;
+           .mp_news-text;
+        }
+
+        .mp_news_list{
+            margin: 0;
+
+            >li.mp_news_item{
+                padding: 0 20px;
+                height:40px;
+                line-height:40px;
+                overflow: hidden;
+                border-top: 1px solid #e7e7eb;
+
+                >a{
+                    display: block;
+
+                    strong{
+                        width:85%;
+                        .mp_news-text;
+                        .ellipsis;
+                        text-align: left;
+                        float:left;
+                        display:block;
+
+                        &:hover{
+                            color: #459ae9;
+                        }
+                    }
+
+                    span{
+                        text-align: right;
+                        .mp_news-text;
+                        
+                        &:hover{
+                            color: #459ae9;
+                        }
+                    }
+                }
+            }
+        }
+
+        .echars{
+            margin: 50px 0;
+        }
+    }
+
+    .page{
+        text-align: center;
+    }
+
+}
+
+
+
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="./css/user.css">
+        <script type="text/javascript" src="./js/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/html5shiv.js"></script>
+        <script type="text/javascript" src="./js/size.js"></script>
+        <script type="text/javascript" src="./js/angular.min.js"></script>
+        <script type="text/javascript" src="./js/user/user.js"></script>
+
+    </head>
+    <body ng-app='userApp' ng-controller='userList'>
+        <header class="header" ng-include="'./component/header.html'"></header>
+        <section class="main">
+            <div class="container">
+                <aside class="menu_box" ng-include="'./component/left.html'"></aside>
+                <section class="section-box">
+                    <div class="mp_news__box">
+                        <div class="title_bar">账号设置</div>
+                        <ul class="account_setting_list">
+                            <li class="account_setting_item">
+                                <h4>头像</h4>
+                                <div class="meta_content">
+                                    <img src="./images/1.jpg"/>
+                                </div>
+                                <div class="meta_opr">修改头像</div>
+                            </li>
+                            <li class="account_setting_item">
+                                <h4>姓名</h4>
+                                <div class="meta_content">
+                                	<input type="text" class="user" ng-model="username" ng-disabled="isDisabled">
+                                </div>
+                                <div class="change" ng-click="submitUser()">确定修改</div>	
+                                <div class="meta_opr" ng-click="changeUser()">修改用户名</div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </section>
+        <footer class="footer" ng-include="'./component/footer.html'"></footer>
+    </body>
+</html>

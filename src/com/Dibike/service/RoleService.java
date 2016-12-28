@@ -1,0 +1,13 @@
+package com.Dibike.service;
+
+import java.util.List;
+
+import com.Dibike.entity.Role;
+
+public interface RoleService {
+
+	List<Role> findAllRole();
+
+	List<Role> findByRoleID(String roleID);
+
+}

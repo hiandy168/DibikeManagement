@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="./css/bike.css">
+        <script type="text/javascript" src="./js/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/html5shiv.js"></script>
+        <script type="text/javascript" src="./js/size.js"></script>
+       	<script type="text/javascript" src="./js/ng/angular.min.js"></script>
+        <script type="text/javascript">
+        	var vm = angular.module('bikeApp',[]).run(function($rootScope){
+        		$rootScope.bikeManage = true;
+        		$rootScope.bikeAll= true;
+        		
+        	});
+        </script>
+        <script type="text/javascript" src="./js/component/loginout.js"></script>
+       	<script type="text/javascript" src="./js/bike/bikeManage.js"></script>
+	</head>
+    <body ng-app='bikeApp'>
+        <header class="header" ng-include="'./component/header.html'" ng-controller='logList'></header>
+        <section class="main">
+            <div class="container">
+                <aside class="menu_box" ng-include="'./component/menu.html'"></aside>
+                <section class="section-box" ng-controller='bikeList'>
+                    <div class="mp_news__box">
+                        <div class="title_bar">车辆管理</div>
+                        <div class="tabNav" ng-include="'./component/bikeNav.html'"></div>
+						<table class="bike_bar">
+							<thead ng-include="'./component/bikethead.html'"></thead>
+							<tbody>
+								<tr ng-repeat="data in NoCheck track by $index">
+									<td ng-bind="data.bikeNO"></td>
+									<td ng-bind="data.question"></td>
+									<td ng-bind="data.description"></td>
+									<td>
+										<input type="button" ng-value="'审核'" ng-click="audit(data.id)"/>
+									</td>
+								</tr>
+								<tr ng-repeat="data in queryPass track by $index">
+									<td ng-bind="data.bikeNO"></td>
+									<td ng-bind="data.question"></td>
+									<td ng-bind="data.description"></td>
+									<td></td>
+								</tr>
+								<tr ng-repeat="data in queryNoPass track by $index">
+									<td ng-bind="data.bikeNO"></td>
+									<td ng-bind="data.question"></td>
+									<td ng-bind="data.description"></td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+            </div>
+        </section>
+        <footer class="footer" ng-include="'./component/footer.html'"></footer>
+    </body>
+</html>
