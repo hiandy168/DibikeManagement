@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="./css/login.css">
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/html5shiv.js"></script>
+        <script type="text/javascript" src="./js/size.js"></script>
+        <script type="text/javascript" src="./js/ng/angular.min.js"></script>
+		<script type="text/javascript" src="./js/login/login.js"></script>
+    </head>
+	<body ng-app='loginApp'>
+		<header class="header">
+			<div class="container">
+				<div class="logo">
+					<img src="./images/logo.png"/>
+				</div>
+				<div class="text">贝庆  网站管理后台</div>
+			</div>
+		</header>
+		<section class="section">
+			<div class="banner">
+				<div class="container">
+					<div class="login" ng-controller='loginList'>
+						<h1 class="maincolor">账号登录</h1>
+						<form class="form-horizontal" role="form" method="post" action="">
+							<div class="form-group">
+								<label class="col-sm-2 control-label"></label>
+								<div class="col-sm-8">
+	      							<input type="text" class="username form-control" placeholder="请输入用户名" ng-keyup="login($event)">
+	    						</div>
+	    					</div>
+    						<div class="form-group">
+    							<label class="col-sm-2 control-label"></label>
+    							<div class="col-sm-8">
+      								<input type="password" class="password form-control" placeholder="请输入密码" ng-keyup="login($event)">
+    							</div>
+  							</div>
+  							<div class="login-forget">
+  								<input type="checkbox" />
+  								<span>自动登录</span>
+  							</div>
+  							<input type="submit" ng-click="submit()" class="mainbgcolor" value="登     录"/>
+  						</form>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<p>单车，不仅方便了出行，也是城市的一条靓丽的风景线。低碳出行，绿色环保，让生活更美好。</p>
+			</div>
+		</section>
+        <footer class="footer" ng-include="'./component/footer.html'"></footer>
+	</body>
+</html>

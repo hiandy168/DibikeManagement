@@ -1,0 +1,42 @@
+package com.Dibike.service.impl;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.Dibike.common.BaseDao;
+import com.Dibike.entity.Report_illegal_stop;
+import com.Dibike.service.Report_illegal_stopService;
+
+@Service("report_illegal_stopService")
+public class Report_illegal_stopServiceImpl implements Report_illegal_stopService{
+
+	@Resource
+	private BaseDao<Report_illegal_stop> baseDao;
+	@Override
+	public List<Report_illegal_stop> findByStatus(String status) {
+		List<Report_illegal_stop> list = baseDao.find("from Report_illegal_stop where status='"+status+"'");
+		if (list.size() == 0) {
+			return null;
+		} else {
+			return list;
+		}
+	}
+	@Override
+	public Report_illegal_stop findById(String id) {
+		List<Report_illegal_stop> list = baseDao.find("from Report_illegal_stop where id='"+id+"'");
+		if (list.size() == 0) {
+			return null;
+		} else {
+			return list.get(0);
+		}
+	}
+	@Override
+	public void updateReport_illegal_stop(Report_illegal_stop report_illegal_stop) {
+		baseDao.update(report_illegal_stop);
+		
+	}
+
+}
