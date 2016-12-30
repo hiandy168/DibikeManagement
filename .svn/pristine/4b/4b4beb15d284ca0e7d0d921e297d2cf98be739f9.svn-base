@@ -1,0 +1,120 @@
+package com.Dibike.service.impl;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.Dibike.common.BaseDao;
+import com.Dibike.entity.Action;
+import com.Dibike.service.ActionService;
+
+@Service("actionService")
+public class ActionServiceImpl implements ActionService{
+	@Resource
+	private BaseDao<Action> baseDao;
+	
+	@Resource
+	private BaseDao<String> StringDao;
+	
+	public List<Action> findByActionID(String actionID) {
+		List<Action> lists = baseDao.find("from Action where actionID='"+actionID+"'");
+		if(lists.size() == 0){
+			return null;
+		}else{
+			return lists;
+		}
+	}
+
+	@Override
+	public List<String> findpidsByManageID(String manageID) {
+		List<String> lists = StringDao.find("select distinct(a.pid) from Action a,Manage_action ma where a.actionID=ma.actionID and ma.manageID='"+manageID+"'");
+		if(lists.size() == 0){
+			return null;
+		}else{
+			return lists;
+		}
+	}
+
+	@Override
+	public List<String> findmidNameByManageID(String manageID,String pid) {
+		List<String> lists = StringDao.find("select a.name, a.url from Action a,Manage_action ma where a.actionID=ma.actionID and ma.manageID='"+manageID+"'and a.pid='"+pid+"'");
+		if(lists.size() == 0){
+			return null;
+		}else{
+			return lists;
+		}
+	}
+	public List<Action> findAllAction() {
+		List<Action> list = baseDao.find("from Action where pid<>'0'");
+		if (list.size() == 0) {
+			return null;
+		} else {
+			return list;
+		}
+	}
+	public List<Action> findByRoleID(String roleID) {
+		List<Action> lists = 
+				baseDao.find("select a from Action a,Action_role ar  where a.actionID=ar.actionID and ar.roleID='"+roleID+"'");
+		if(lists.size() == 0){
+			return null;
+		}else{
+			return lists;
+		}
+	}
+	public List<Action> findActionSon(String actionID) {
+		List<Action> list = baseDao.find("from Action where pid='"+actionID+"'");
+		if (list.size() == 0) {
+			return null;
+		} else {
+			return list;
+		}
+	}
+
+	@Override
+	public List<String> findAllpids() {
+		List<String> lists = StringDao.find("select actionID from Action where pid='0'");
+		if(lists.size() == 0){
+			return null;
+		}else{
+			return lists;
+		}
+	}
+
+	@Override
+	public List<String> findActionSonBypid(String pid) {
+		List<String> lists = StringDao.find("select name from Action where pid='"+pid+"'");
+		if(lists.size() == 0){
+			return null;
+		}else{
+			return lists;
+		}
+	}
+
+	@Override
+	public List<String> findpidsByRoleID(String roleID) {
+		List<String> lists = StringDao.find("select distinct(a.pid) from Action a,Action_role ar where a.actionID=ar.actionID and ar.roleID='"+roleID+"'");
+		if(lists.size() == 0){
+			return null;
+		}else{
+			return lists;
+		}
+	}
+
+	@Override
+	public List<String> findmidNameByRoleID(String pid,String roleID) {
+		List<String> lists = StringDao.find("select a.name from Action a,Action_role ar where a.actionID=ar.actionID and pid='"+pid+"' and roleID='"+roleID+"'");
+		if(lists.size() == 0){
+			return null;
+		}else{
+			return lists;
+		}
+	}
+
+	@Override
+	public void saveAction(Action action) {
+		baseDao.save(action);
+	}
+
+}

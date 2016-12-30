@@ -1,0 +1,68 @@
+vm.controller('peopleManageList',['$scope','$http',function($scope,$http){
+	
+	$http({
+		method:'POST',
+		url:'/DibikeManagement/privilege/queryAllRole.do',
+		dataType:'json',
+	}).success(function(result){
+		$scope.department=result.data;
+		
+	}).error(function(result){
+		
+	});
+	
+	$scope.selectPeople=function(roleID){
+		var del=angular.element("input[name='department']:checked").val();
+		
+		$http({
+			method:'POST',
+			params:{
+    			"roleID":roleID
+            },
+			url:'/DibikeManagement/privilege/queryManageAndAction.do',
+		}).success(function(result){
+			$scope.privilege=result.data[0];
+			console.log(result.data[0]);
+			console.log(result.data[1]);
+			
+		}).error(function(result){
+				
+		});
+	}
+	
+	$scope.save=function(){
+		var del=angular.element("input[name='department']:checked").val();
+		var pri=angular.element("input[name='privilege']");
+	
+		var arrPri=[];
+	
+		for(var i=0; i<pri.length; i++){
+			if(pri[i].checked){
+				arrPri.push(pri[i].value)
+			}
+		};
+		
+		console.log(arrPri);
+		
+		if(del==null || arrPri.length==0){
+			alert('请选择部门和个人权限再提交！！！')
+		}else{
+			$http({
+				method:'POST',
+				params:{
+					
+	    			"actionIDs":arrPri
+	    		},
+				url:'/DibikeManagement/privilege/updateManagePrivilege.do',
+			}).success(function(result){
+				if(result.status==0){
+					alert('保存成功!!!')
+				}
+			}).error(function(result){
+					
+			});
+		}
+	
+	}
+	
+}]);

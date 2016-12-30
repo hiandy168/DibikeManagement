@@ -1,0 +1,133 @@
+<!-- <dl class="menu">
+    <dt class="menu_title">
+        <span class="glyphicon glyphicon-th-large"></span>
+        <span>权限</span>
+    </dt>
+    <dd class="menu_item" ng-class="{'selected':role}" ng-repeat="data in dataList">
+        <a ng-href="./role.html" ng-class="{'selected':role}" ng-bind="data.name"></a>
+    </dd>
+</dl> -->
+<dl class="menu" ng-repeat="data in dataList">
+    <dt class="menu_title">
+        <span class="glyphicon glyphicon-th-large"></span>
+        <span ng-bind="data[0]"></span>
+    </dt>
+    <dd class="menu_item" ng-repeat="list in data[1]">
+        <a href="javascript:" ng-bind="list"></a>
+    </dd> 
+</dl>
+<!-- <dl class="menu">
+    <dt class="menu_title">
+        <span class="glyphicon glyphicon-th-large"></span>
+        <span>用户显示</span>
+    </dt>
+   	<dd class="menu_item" ng-class="{true:'selected'}[{{className}}]">
+        <a href="./userQuery.html" ng-class="{true:'selected'}[{{className}}]">用户查询</a>
+    </dd>
+    <dd class="menu_item" ng-class="{'selected':userQuery}">
+        <a href="./userQuery.html" ng-class="{'selected':userQuery}">用户查询</a>
+    </dd>
+    <dd class="menu_item" ng-class="{'selected':userShow}">
+        <a href="./userShow.html" ng-class="{'selected':userShow}">用户显示</a>
+    </dd>
+</dl>
+<dl class="menu">
+    <dt class="menu_title">
+        <span class="glyphicon glyphicon-th-large"></span>
+        <span>个人信息管理</span>
+    </dt>
+    <dd class="menu_item" ng-class="{'selected':userName}">
+        <a href="./userName.html" ng-class="{'selected':userName}">实名认证</a>
+    </dd> 
+    <dd class="menu_item" ng-class="{'selected':userInfo}">
+        <a href="./userInfo.html" ng-class="{'selected':userInfo}">修改个人信息</a>
+    </dd>
+    <dd class="menu_item" ng-class="{'selected':password}">
+        <a href="./password.html" ng-class="{'selected':password}">修改密码</a>
+    </dd>
+</dl>
+<dl class="menu">
+    <dt class="menu_title">
+        <span class="glyphicon glyphicon-th-large"></span>
+        <span>管理员模块</span>
+    </dt>
+    <dd class="menu_item">
+        <a href="javascript:">管理员管理</a>
+    </dd>
+    <dd class="menu_item" ng-class="{'selected':delManage}">
+        <a href="./delManage.html" ng-class="{'selected':delManage}">部门权限管理</a>
+    </dd>
+    <dd class="menu_item" ng-class="{'selected':peopleManage}">
+        <a href="./peopleManage.html" ng-class="{'selected':peopleManage}">个人权限管理</a>
+    </dd>
+</dl>
+<dl class="menu">
+    <dt class="menu_title">
+        <span class="glyphicon glyphicon-th-large"></span>
+        <span>车辆模块</span>
+    </dt>
+    <dd class="menu_item" ng-class="{'selected':bikeManage}">
+        <a href="./bikeManage.html" ng-class="{'selected':bikeManage}">车辆管理</a>
+    </dd>
+    <dd class="menu_item" ng-class="{'selected':bikeMap}">
+        <a href="./bikeMap.html" ng-class="{'selected':bikeMap}">车辆查看</a>
+    </dd>
+    <dd class="menu_item" ng-class="{'selected':inform}">
+        <a href="inform.html" ng-class="{'selected':inform}">举报违停</a>
+    </dd>
+    <dd class="menu_item">
+        <a href="javascript:">维修人员设定</a>
+    </dd>
+</dl>
+<dl class="menu">
+    <dt class="menu_title">
+        <span class="glyphicon glyphicon-th-large"></span>
+        <span>消息模块</span>
+    </dt>
+    <dd class="menu_item">
+        <a href="javascript:">消息展示</a>
+    </dd>
+    <dd class="menu_item">
+        <a href="javascript:">消息管理</a>
+    </dd>
+    <dd class="menu_item">
+        <a href="javascript:">群发管理</a>
+    </dd>
+    <dd class="menu_item">
+        <a href="javascript:">发送消息管理</a>
+    </dd>
+</dl>
+<dl class="menu">
+    <dt class="menu_title">
+        <span class="glyphicon glyphicon-inbox"></span>
+        <span>支付管理管理</span>
+    </dt>
+    <dd class="menu_item" ng-class="{'selected':paymentQuery}">
+        <a href="./paymentQuery.html" ng-class="{'selected':paymentQuery}">支付查询</a>
+    </dd>
+    <dd class="menu_item">
+        <a href="javascript:">支付管理</a>
+    </dd>
+    <dd class="menu_item" ng-class="{'selected':refund}">
+        <a href="refund.html" ng-class="{'selected':refund}">申请退款</a>
+    </dd>
+    <dd class="menu_item">
+        <a href="javascript:">退款人数限制</a>
+    </dd>
+</dl>
+<dl class="menu">
+    <dt class="menu_title">
+        <span class="glyphicon glyphicon-volume-up"></span>
+        <span>系统设置模块</span>
+    </dt>
+    <dd class="menu_item">
+        <a href="javascript:">基本设置</a>
+    </dd>
+    <dd class="menu_item">
+        <a href="javascript:">附件设置</a>
+    </dd>
+    <dd class="menu_item">
+        <a href="javascript:">其它设置</a>
+    </dd>
+</dl> -->
+

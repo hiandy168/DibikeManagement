@@ -1,0 +1,35 @@
+vm.controller('menuList',['$scope','$http',function($scope,$http){
+	
+	var username=window.localStorage.getItem("username");
+	var password=window.localStorage.getItem("password");
+	
+	$http({
+		method:'POST',
+		params:{
+			"username":username,
+	        "password":password
+		},
+		url:'/DibikeManagement/manage/login.do',
+		dataType:'json',
+	}).success(function(result){
+		if(result.status==0){
+			$scope.dataList=result.data || {};
+			//console.log(result.data);
+			angular.forEach(result.data,function(value,i){
+				console.log(value);
+				/*console.log(value);
+				$scope.dataList=value[0];*/
+				
+			});
+			/*$scope.dataList=result.data || {};
+			console.log($scope.dataList[0]);
+			console.log($scope.dataList[1]);*/
+		}else{
+			
+		}
+			
+	}).error(function(result){
+			
+	});
+	
+}]);
