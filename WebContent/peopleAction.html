@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="./css/user.css">
+        <script type="text/javascript" src="./js/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/html5shiv.js"></script>
+        <script type="text/javascript" src="./js/size.js"></script>
+        <script type="text/javascript" src="./js/ng/angular.min.js"></script>
+       	<script type="text/javascript">
+        	var vm=angular.module('peopleManageApp',[]).run(function($rootScope){
+        		$rootScope.peopleAction= true;
+        	});
+        </script>
+        <script type="text/javascript" src="./js/component/loginout.js"></script>
+        <script type="text/javascript" src="./js/component/menu.js"></script>
+        <script type="text/javascript" src="./js/user/peopleAction.js"></script>
+	</head>
+    <body ng-app='peopleManageApp'>
+        <header class="header" ng-include="'./component/header.html'" ng-controller='logList'></header>
+        <section class="main">
+            <div class="container">
+                <aside class="menu_box" ng-include="'./component/menu.html'" ng-controller='menuList'></aside>
+                <section class="section-box" ng-controller="peopleManageList">
+                    <div class="mp_news__box">
+                        <div class="title_bar">个人权限管理</div>
+                        <label class="dep_pri">
+                        	<div class="title">部门</div>
+                        	<ul class="dep_pri_list fl">
+                        		<li ng-repeat="data in department track by $index">
+                        			<input type="radio" name="department" ng-value="data.roleID" ng-checked="data.name == 'IT部'" ng-focus="selectPeople(data.roleID)"/>
+                        			<span ng-bind="data.name"></span>
+                        		</li>
+							</ul>
+                        </label>
+                        <label class="dep_pri">
+                        	<div class="title">人员</div>
+                        	<ul class="dep_pri_list fl">
+	                        	<li ng-repeat="data in people track by $index">
+	                        		<input type="radio" name="people" ng-value="data.manageID"/>
+	                        		<span ng-bind="data.name"></span>	
+	                        	</li>
+                        	</ul>
+                        </label>
+                        <label class="dep_pri">
+                        	<div class="title">权限</div>
+                        	<ul class="dep_pri_list">
+								<li ng-repeat="data in privilege track by $index">
+									<div class="dell" ng-bind="data[0]"></div>
+									<div class="delll" ng-repeat="list in data[1] track by $index">
+										<input type="checkbox" name="privilege" ng-value="list[1]"/>
+										<span ng-bind="list[0]"></span>
+									</div>
+								</li>
+							</ul>
+                        </label>
+                        <input type="button" class="save" value="保存" ng-click="save()">
+					</div>
+                </section>
+            </div>
+        </section>
+        <footer class="footer" ng-include="'./component/footer.html'"></footer>
+    </body>
+</html>

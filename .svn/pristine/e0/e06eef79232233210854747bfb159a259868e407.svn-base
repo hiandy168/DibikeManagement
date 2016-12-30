@@ -1,0 +1,27 @@
+package com.Dibike.service.impl;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.Dibike.common.BaseDao;
+import com.Dibike.entity.Action;
+import com.Dibike.service.ActionService;
+
+@Service("actionService")
+public class ActionServiceImpl implements ActionService{
+	@Resource
+	private BaseDao<Action> baseDao;
+	
+	public List<Action> findByActionID(String actionID) {
+		List<Action> lists = baseDao.find("from Action where actionID='"+actionID+"'");
+		if(lists.size() == 0){
+			return null;
+		}else{
+			return lists;
+		}
+	}
+
+}

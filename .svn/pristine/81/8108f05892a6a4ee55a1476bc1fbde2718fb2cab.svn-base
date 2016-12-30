@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="./css/user.css">
+        <script type="text/javascript" src="./js/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/html5shiv.js"></script>
+        <script type="text/javascript" src="./js/size.js"></script>
+        <script type="text/javascript" src="./js/ng/angular.min.js"></script>
+       	<script type="text/javascript">
+        	var vm=angular.module('delManageApp',[]).run(function($rootScope){
+        		$rootScope.delManage= true;
+        	});
+        </script>
+        <script type="text/javascript" src="./js/component/loginout.js"></script>
+        <script type="text/javascript" src="./js/user/delManage.js"></script>
+	</head>
+    <body ng-app='delManageApp'>
+        <header class="header" ng-include="'./component/header.html'" ng-controller='logList'></header>
+        <section class="main">
+            <div class="container">
+                <aside class="menu_box" ng-include="'./component/menu.html'"></aside>
+                <section class="section-box" ng-controller="delManageList">
+                    <div class="mp_news__box">
+                        <div class="title_bar">权限管理</div>
+                        <label class="dep_pri">
+                        	<div class="title">部门</div>
+                        	<ul class="dep_pri_list">
+                        		<li ng-repeat="data in department track by $index">
+                        			<input type="radio" name="department" ng-checked="data.name==='IT部'" ng-value="data.roleID"/>
+                        			<span ng-bind="data.name"></span>
+                        		</li>
+							</ul>
+                        </label>
+                        <label class="dep_pri">
+                        	<div class="title">权限</div>
+                        	<ul class="dep_pri_list">
+								<li ng-repeat="data in privilege track by $index">
+									<input type="checkbox" name="privilege" ng-value="data.actionID">
+									<span ng-bind="data.name"></span>
+								</li>
+							</ul>
+                        </label>
+                        <input type="button" class="save" value="保存" ng-click="save()">
+					</div>
+                </section>
+            </div>
+        </section>
+        <footer class="footer" ng-include="'./component/footer.html'"></footer>
+    </body>
+</html>
