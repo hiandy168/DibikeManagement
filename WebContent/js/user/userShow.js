@@ -9,16 +9,13 @@ vm.controller('userSList',['$scope','$http',function($scope,$http){
 		url:'/DibikeManagement/member/countMember.do',
 		dataType:'json',
 	}).success(function(result){
-		
 		var week=[];
-		
 		angular.forEach(result.data[0],function(value,i){
 			week.push('第'+(i+1)+'周');
 		});
 		
 		
 		var month=[];
-		
 		angular.forEach(result.data[1],function(value,i){
 			month.push('第'+(i+1)+'月');
 		});

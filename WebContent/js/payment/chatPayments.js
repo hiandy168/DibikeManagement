@@ -11,10 +11,11 @@ vm.controller('PaymentsList',['$scope','$http',function($scope,$http){
 			$http({
 				method:'POST',
 				url:'/DibikeManagement/export/excelweChatPayments.do',
-				dataType:'json',
+				dataType:'text'
 			}).success(function(result){
 				if(status==0){
-					alert('导出成功!!!')
+					alert('导出成功!!!');
+					document.location.href='/DibikeManagement/export/excelweChatPayments.do'
 				}
 			}).error(function(result){
 				

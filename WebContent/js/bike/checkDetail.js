@@ -12,7 +12,6 @@ vm.controller('detailList',['$scope','$http',function($scope,$http){
 		$scope.page=result.data[1];
 		$scope.detail=result.data[2];
 		
-		
 		$scope.export=function(){
 			$http({
 				method:'POST',
@@ -20,14 +19,16 @@ vm.controller('detailList',['$scope','$http',function($scope,$http){
 					"number":1,
 				},
 				url:'/DibikeManagement/export/excelBike_fault.do',
-				dataType:'json',
+				dataType:'text'
 			}).success(function(result){
 				if(status==0){
-					alert('导出成功!!!')
+					alert('导出成功!!!');
+					document.location.href='/DibikeManagement/export/excelBike_fault.do?number='+1;
 				}
 			}).error(function(result){
 				
 			});
+			
 		}
 		
 		angular.element('.pagination li a').on('click',function(){
@@ -53,5 +54,7 @@ vm.controller('detailList',['$scope','$http',function($scope,$http){
 	}).error(function(result){
 			
 	});
+	
+	
 	
 }]);
