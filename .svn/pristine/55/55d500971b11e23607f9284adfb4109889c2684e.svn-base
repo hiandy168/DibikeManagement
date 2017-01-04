@@ -1,0 +1,44 @@
+package com.Dibike.controller;
+
+import java.util.List;
+import javax.annotation.Resource;
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.Dibike.common.Result;
+import com.Dibike.entity.Alipay_payment;
+import com.Dibike.service.AlipayPaymentService;
+
+/**
+ * @author wuxiang
+ * @version 创建时间：2017年1月2日 下午5:18:02
+ * 
+ */
+@Controller
+@RequestMapping("/aliPayment")
+public class AliPaymentController {
+	private static Logger logger = Logger.getLogger(AliPaymentController.class);
+	@Resource
+	private AlipayPaymentService alipayPaymentService;
+
+	@RequestMapping(value = "/findAliPayments")
+	@ResponseBody
+	public Result findAliPayments() {
+		logger.info("-------查询所有支付宝支付明细------");
+		Result result = new Result();
+		List<Alipay_payment> list = alipayPaymentService.findAllAlipay_payments();
+		if (list == null) {
+			result.setStatus("1");
+			result.setMsg("查询成功");
+			result.setData(null);
+			return result;
+		} else {
+			result.setStatus("0");
+			result.setMsg("查询失败");
+			result.setData(list);
+			return result;
+		}
+	}
+}
+

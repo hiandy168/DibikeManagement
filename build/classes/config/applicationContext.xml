@@ -63,8 +63,10 @@
 				<value>com.Dibike.entity.Wallet</value>
 				<value>com.Dibike.entity.Bike</value>
 				<value>com.Dibike.entity.Point</value>
-				<value>com.Dibike.entity.Log</value>
 				<value>com.Dibike.entity.Manage_action</value>
+				<value>com.Dibike.entity.H5_Page</value>
+				<value>com.Dibike.entity.WeChat_payment</value>
+				<value>com.Dibike.entity.Alipay_payment</value>
 			</list>
 		</property>
 

@@ -1,0 +1,30 @@
+package com.Dibike.service.impl;
+
+import java.util.List;
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
+import com.Dibike.common.BaseDao;
+import com.Dibike.entity.Alipay_payment;
+import com.Dibike.service.AlipayPaymentService;
+
+/**
+ * @author wuxiang
+ * @version 创建时间：2017年1月2日 下午5:14:00
+ * 
+ */
+@Service("alipayPaymentService")
+public class AlipayPaymentServiceImpl implements AlipayPaymentService{
+	
+	@Resource
+	private BaseDao<Alipay_payment> baseDao;
+
+	@Override
+	public List<Alipay_payment> findAllAlipay_payments() {
+		List<Alipay_payment> list=baseDao.find("from Alipay_payment");
+		if(list.size()==0){
+			return null;
+		}else{
+			return list;
+		}
+	}
+}

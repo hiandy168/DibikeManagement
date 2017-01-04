@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="./css/member.css">
+        <script type="text/javascript" src="./js/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/html5shiv.js"></script>
+        <script type="text/javascript" src="./js/size.js"></script>
+        <script type="text/javascript" src="./js/ng/angular.min.js"></script>
+       	<script type="text/javascript">
+        	var vm=angular.module('MemberInfos',[]).run(function($rootScope){
+        		$rootScope.findAllMemberInfos = true;
+        	});
+        </script>
+        <script type="text/javascript" src="./js/component/loginout.js"></script>
+        <script type="text/javascript" src="./js/component/menu.js"></script>
+        <script type="text/javascript" src="./js/member/MemberInfos.js"></script>
+	</head>
+    <body ng-app='MemberInfos'>
+        <header class="header" ng-include="'./component/header.html'" ng-controller='logList'></header>
+        <section class="main">
+            <div class="container">
+                <aside class="menu_box" ng-include="'./component/menu.html'" ng-controller='menuList'></aside>
+                <section class="section-box" ng-controller="MemberList">
+                    <div class="mp_news__box">
+                        <div class="title_bar">会员中心</div>
+                        <table class="bike_bar">
+							<thead>
+								<th ng-bind="'姓名'"></th>
+							  	<th ng-bind="'生日'"></th>
+							  	<th ng-bind="'积分'"></th>
+							  	<th ng-bind="'金额'"></th>
+							  	<th ng-bind="'押金'"></th>
+							  	<th ng-bind="'会员等级'"></th>
+							</thead>
+							<tbody>
+								<tr ng-repeat="data in member track by $index">
+									<td ng-bind="data.nickName"></td>
+									<td ng-bind="data.birthday"></td>
+									<td ng-bind="data.point"></td>
+									<td ng-bind="data.money"></td>
+									<td ng-bind="data.deposit"></td>
+									<td ng-bind="data.grade"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+                </section>
+            </div>
+        </section>
+        <footer class="footer" ng-include="'./component/footer.html'"></footer>
+    </body>
+</html>

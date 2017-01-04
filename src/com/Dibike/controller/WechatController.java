@@ -1,0 +1,47 @@
+package com.Dibike.controller;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.Dibike.common.Result;
+import com.Dibike.entity.MemberInfo;
+import com.Dibike.entity.WeChat_payment;
+import com.Dibike.service.WechatService;
+
+/**
+ * @author wuxiang
+ * @version 创建时间：2017年1月2日 下午5:01:02
+ * 
+ */
+@Controller
+@RequestMapping("/wechat")
+public class WechatController {
+	private static Logger logger = Logger.getLogger(WechatController.class);
+	@Resource
+	private WechatService wechatService;
+	
+	@RequestMapping(value = "/findweChatPayments")
+	@ResponseBody
+	public Result findweChatPayments(){
+		logger.info("-------查询所有微信支付明细------");
+		Result result=new Result();
+		List<WeChat_payment> list=wechatService.findAllWeChat_payments();
+		if(list==null){
+			result.setStatus("1");
+			result.setMsg("查询失败");
+			result.setData(null);
+			return result;
+		}else{
+			result.setStatus("0");
+			result.setMsg("查询成功");
+			result.setData(list);
+			return result;
+		}
+	}
+}
