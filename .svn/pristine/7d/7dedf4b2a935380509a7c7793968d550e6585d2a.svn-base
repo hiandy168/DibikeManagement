@@ -1,0 +1,85 @@
+package com.Dibike.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.Dibike.common.BaseDao;
+import com.Dibike.entity.Bike_fault;
+import com.Dibike.service.BikeFaultService;
+
+@Service("bikeFaultService")
+public class BikeFaultServiceImpl implements BikeFaultService{
+
+	@Resource
+	private BaseDao<Bike_fault> baseDao;
+	
+	@Override
+	public List<Bike_fault> findByStatus(String status) {
+		List<Bike_fault> list = baseDao.find("from Bike_fault where status='"+status+"'");
+		if (list.size() == 0) {
+			return null;
+		} else {
+			return list;
+		}
+	}
+
+	@Override
+	public void updateBike_fault(Bike_fault bike_fault) {
+		baseDao.update(bike_fault);
+		
+	}
+
+	@Override
+	public Bike_fault findById(String id) {
+		List<Bike_fault> list = baseDao.find("from Bike_fault where id='"+id+"'");
+		if (list.size() == 0) {
+			return null;
+		} else {
+			return list.get(0);
+		}
+	}
+
+	@Override
+	public List<Bike_fault> findAll() {
+		List<Bike_fault> list = baseDao.find("from Bike_fault ");
+		if (list.size() == 0) {
+			return null;
+		} else {
+			return list;
+		}
+	}
+
+	@Override
+	public List<List<String>> findList(int pageNum, int pageSize) {
+		List<?> bike_faultLists = baseDao.find("select bikeNO,question,description,status,city,address,time from Bike_fault", pageNum, pageSize);
+		List<List<String>> lists = new ArrayList<List<String>>();
+		   if(bike_faultLists != null && bike_faultLists.size()>0){
+			   for(int i = 0; i < bike_faultLists.size();i++){
+				   List<String> list = new ArrayList<String>();
+			    	Object[] object = (Object[])bike_faultLists.get(i);
+			    	String bikeNo =  (String)object[0];
+			    	String question =  (String)object[1];
+			    	String description =  (String)object[2];
+			    	String status =  (String)object[3];
+			    	String city =  (String)object[4];
+			    	String address =  (String)object[5];
+			    	String time =  (String)object[6];
+			    	list.add(bikeNo);
+			    	list.add(question);
+			    	list.add(description);
+			    	list.add(status);
+			    	list.add(city);
+			    	list.add(address);
+			    	list.add(question);
+			    	list.add(time);
+			    	lists.add(list);
+			    }
+		}
+		return lists;
+	}
+
+}

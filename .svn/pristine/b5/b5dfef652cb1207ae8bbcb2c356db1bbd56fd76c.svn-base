@@ -1,0 +1,14 @@
+vm.controller('paymentAli',['$scope','$http',function($scope,$http){
+	
+	$http({
+		method:'POST',
+		url:'/DibikeManagement/aliPayment/findAliPayments.do',
+		dataType:'json',
+	}).success(function(result){
+		$scope.payments=result.data;
+		console.log($scope.payments);
+	}).error(function(result){
+		
+	});
+	
+}]);
