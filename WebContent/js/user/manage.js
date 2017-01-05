@@ -1,0 +1,45 @@
+vm.controller('manageList',['$scope','$http',function($scope,$http){
+	
+	$http({
+		method:'POST',
+		url:'/DibikeManagement/action/queryAllRole.do',
+		dataType:'json',
+	}).success(function(result){
+		$scope.privilege=result.data;
+		
+		$scope.save=function(){
+			var del=angular.element("input[name='department']:checked").val();
+			var name=angular.element("input.name").val();
+			
+			if(del==null){
+				alert('请选择部门!!');
+			}else if(name.length==0){
+				alert('请输入用户名!!');
+			}else{
+				$http({
+					method:'POST',
+					params:{
+						"roleID":del,
+						"name":name
+			        },
+					url:'/DibikeManagement/manage/addManage.do',
+				}).success(function(result){
+					if(status==0){
+						alert('增加成功!!!')
+					}
+					
+				}).error(function(result){
+						
+				});
+			}
+			
+		}
+		
+	}).error(function(result){
+			
+	});
+		
+		
+	
+
+}]);

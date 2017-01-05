@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="./css/user.css">
+        <script type="text/javascript" src="./js/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/html5shiv.js"></script>
+        <script type="text/javascript" src="./js/size.js"></script>
+        <script type="text/javascript" src="./js/ng/angular.min.js"></script>
+       	<script type="text/javascript">
+        	var vm=angular.module('paymentAli',[]).run(function($rootScope){
+        		$rootScope.findAliPayments= true;
+        	});
+        </script>
+        <script type="text/javascript" src="./js/component/loginout.js"></script>
+        <script type="text/javascript" src="./js/component/menu.js"></script>
+        <script type="text/javascript" src="./js/payment/paymentAli.js"></script>
+	</head>
+    <body ng-app='paymentAli'>
+        <header class="header" ng-include="'./component/header.html'" ng-controller='logList'></header>
+        <section class="main">
+            <div class="container">
+                <aside class="menu_box" ng-include="'./component/menu.html'" ng-controller='menuList'></aside>
+                <section class="section-box" ng-controller="paymentAli">
+                    <div class="mp_news__box">
+                        <div class="title_bar">支付宝支付明细</div>
+                        <div class="tabNav" ng-include="'./component/export.html'"></div>
+                        <table class="uname_bar">
+							<thead>
+								<th ng-bind="'支付宝交易号'"></th>
+							  	<th ng-bind="'商户订单号'"></th>
+							  	<th ng-bind="'交易状态'"></th>
+							  	<th ng-bind="'订单金额'"></th>
+							  	<th ng-bind="'订单标题'"></th>
+							  	<th ng-bind="'通知时间'"></th>
+							</thead>
+							<tbody>
+								<tr ng-repeat="data in payments track by $index">
+									<td ng-bind="data.trade_no"></td>
+									<td ng-bind="data.out_trade_no"></td>
+									<td ng-bind="data.trade_status"></td>
+									<td ng-bind="data.total_amount"></td>
+									<td ng-bind="data.subject"></td>
+									<td ng-bind="data.notify_time"></td>
+								</tr>
+							</tbody>
+						</table>
+                    </div>
+                </section>
+                <section class="execl_fix">
+		             <div class="execl_box">
+		             	<div class="execl_header">execl文件数据导入</div>
+		             	<div class="execl_main">
+		             		<div class="file">
+		             			<span>请选择文件:</span>
+		             			<input type="text" class="filt" disabled="true"/>
+		             			<input type="file" value="浏览" name="fileTrans" class="fild" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+		             		</div>
+		             	</div>
+		             	<div class="execl_footer">
+		             		<input type="button" value="导入" class="files"/>
+		             		<input type="button" value="关闭" class="close"/>
+		             	</div>
+		             </div>
+		        </section> 
+            </div>
+        </section>
+        <footer class="footer" ng-include="'./component/footer.html'"></footer>
+        
+    </body>
+</html>
