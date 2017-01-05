@@ -1,0 +1,87 @@
+.execl_fix{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.8);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	overflow: hidden;
+	display: none;
+	
+	.execl_box{
+		width: 600px;
+		position: absolute;
+		left: 50%;
+		margin-left: -300px;
+		top: 50px;
+		border: 1px solid #109ba3;
+		z-index: 100;
+		overflow: hidden;
+		
+		.execl_header{
+			width: 100%;
+			height: 60px;
+			line-height: 60px;
+			color: #fff;
+			text-align: center;
+			background: #109ba3;
+			overflow: hidden;
+		}
+		
+		.execl_main{
+			width: 100%;
+			height: 200px;
+			background: #fff;
+			overflow: hidden;
+			
+			.file{
+				width: 100%;
+				height: 60px;
+				line-height: 60px;
+				margin: 70px 0 0 0;
+				text-align: center;
+				
+				.filt{
+					width: 200px;
+					height: 30px;
+					border: 1px solid #222;
+				}
+				
+				.fild{
+					width: 60px;
+					height: 30px;
+					line-height: 30px;
+					background: #109ba3;
+					color: #fff;
+					border: 0 none;
+					display: inline-block;
+					cursor: pointer;
+				}
+			}
+		}
+		
+		.execl_footer{
+			width: 100%;
+			height: 60px;
+			text-align: center;
+			background: #fff;
+			overflow: hidden;
+			
+			.style{
+				width: 60px;
+				height: 30px;
+				line-height: 30px;
+				background: #109ba3;
+				color: #fff;
+				border: 0 none;
+				display: inline-block;
+				cursor: pointer;
+				border-radius: 5px;
+				display:inline-block;
+			}
+			
+		}
+	}
+}
+

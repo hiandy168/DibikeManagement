@@ -1,0 +1,6 @@
+vm.controller('roleList',['$scope','$http',function($scope,$http){
+	
+	
+
+}]);
+

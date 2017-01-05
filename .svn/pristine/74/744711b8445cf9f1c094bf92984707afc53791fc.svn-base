@@ -1,0 +1,5 @@
+vm.controller('manageList',['$scope','$http',function($scope,$http){
+	
+	
+
+}]);

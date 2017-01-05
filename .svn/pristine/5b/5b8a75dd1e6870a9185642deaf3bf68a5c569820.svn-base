@@ -1,0 +1,490 @@
+@import './variables.less';
+@import './mixin.less';
+@import './execl.less';
+@import './public.less';
+
+.pic_box{
+	width: 610px;
+	margin: 10px auto 0;
+	position: relative;
+	overflow: hidden;
+	
+	.gohistory{
+		width:  80px;
+		height: 30px;
+		line-height: 30px;
+		position: absolute;
+		background: #109ba3;
+		color: #fff;
+		top: 0;
+		right: 0;
+		border: 0 none;
+		border-radius: 5px;
+	}
+	
+	.pic{
+		width: 100%;
+		height: 200px;
+		margin: 50px auto 0;
+		
+		img{
+			width: 200px;
+			height: 200px;
+		}
+	}
+	
+	.suerr{
+		width: 200px;
+		margin: 20px auto 20px;
+		overflow: hidden;
+		
+		input{
+			width: 60px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			color: #fff;
+			background: #109ba3;
+			border: 0 none;
+			border-radius: 5px;
+			margin: 0 10px;
+		}
+	}
+}
+
+.section-box{
+  	width: 970px;
+  	float: right;
+  	overflow: hidden;
+  	background: @background;
+  	padding: 20px;
+	
+  .mp_news__box{
+    overflow: hidden;
+    border: 1px solid #e7e7eb;
+
+    .title_bar{
+      	font-weight: 400;
+      	line-height: 40px;
+      	background: #f4f5f9;
+      	padding: 0 20px;
+     	.mp_news-text;
+	}
+	
+	.dep_pri{
+		overflow: hidden;
+		display:block;
+		
+		.mun{
+			float: left;
+			line-height: 40px;
+			color: #222;
+			font-size: 14px;
+			font-weight: normal;
+			margin:0 20px 0 20px;
+		}
+		
+		.meu{
+			width: 150px;	
+			float: left;
+			line-height: 30px;
+			color: #222;
+			font-size: 14px;
+			display:block;
+			margin:5px 0 0 0px;
+			border: 1px solid #222;
+			text-indent: 20px;
+		}
+		
+		>.title{
+			width:100%;
+			line-height: 40px;	
+			color: #222;
+    		font-size: 14px;
+    		font-weight: normal;
+    		margin:0 0 0 20px;
+    		overflow: hidden;
+		}
+		
+		>.dep_pri_list{
+			margin:0 0 0 20px;
+			overflow: hidden;
+			
+			
+			
+			>li{
+				padding:0 10px;
+				overflow: hidden;
+				
+				span{
+					line-height: 40px;
+					color: #222;
+				    font-size: 14px;
+				    font-weight: normal;
+				}
+				
+				.dell{
+					float: left;
+					line-height: 40px;
+					color: #222;
+				    font-size: 14px;
+				    font-weight: normal;
+				    width: 150px;	
+				}
+				
+				.delll{
+					width: 150px;
+					float: left;
+					
+					>span{
+						line-height: 40px;
+						color: #222;
+				    	font-size: 14px;
+				    	font-weight: normal;
+					}
+				}
+				
+				
+			}
+			&.fl{
+				>li{
+					float:left;
+				}
+			}
+		}
+	}
+	
+	.save{
+		width: 80px;
+		height: 30px;
+		line-height: 30px;
+		color:#fff;
+		background: #109ba3;
+		text-align:center;
+		border:0 none;
+		border-radius:5px;
+		margin: 20px auto 20px;
+		display:block;
+		overflow: hidden;
+	}
+	
+	#week{
+		position:relative;
+	}
+	
+	.password_label{
+		margin: 20px auto 0 20px;
+		display: block;
+		overflow: hidden;
+		
+		.key {
+		    width: 100px;
+		    height: 40px;
+		    line-height: 40px;
+		    text-align: left;
+		    float: left;
+		    color: #222;
+    		font-size: 14px;
+		}
+		
+		>input{
+			border: 1px solid #d2d2d2;
+			width: 250px;
+		    height: 40px;
+		    line-height: 40px;
+		    float: left;
+		    text-indent: 20px;
+		    color: #222;
+		    font-weight: normal;
+		}
+	}
+	
+	.query_label{
+		margin: 20px auto 20px 20px;
+		display: block;
+		overflow: hidden;
+		
+		.key {
+		    width: 100px;
+		    height: 40px;
+		    line-height: 40px;
+		    text-align: left;
+		    float: left;
+		    color: #222;
+    		font-size: 14px;
+		}
+		
+		>input.phone{
+			border: 1px solid #d2d2d2;
+			width: 250px;
+		    height: 40px;
+		    line-height: 40px;
+		    float: left;
+		    text-indent: 20px;
+		    margin-right: 30px;
+		    font-weight: normal;
+		}
+		
+		>input.query{
+			float: left;
+			width: 100px;
+			height: 40px;
+		    line-height: 40px;
+		    color:#fff;
+		    background: #109ba3;
+		    border-radius: 5px;
+		    border: 0 none;
+		}
+		
+	}
+	
+	.userList{
+		margin: 20px auto 0 20px;
+		overflow: hidden;
+		
+		.useritem{
+			overflow: hidden;
+			
+			>li{
+				height: 40px;
+			    line-height: 40px;
+			    text-align: left;
+			    float: left;
+			    color: #222;
+	    		font-size: 14px;
+	    		font-weight: bold;
+	    		
+	    		span{
+	    			font-weight: normal;
+	    			margin:0 50px 0;
+	    		}
+			}
+		}
+	}
+	
+	.meta_opr{
+		width: 100px;
+		height: 40px;
+		line-height: 40px;
+		color: #fff;
+		background: #109ba3;
+		border-radius: 5px;
+		margin: 20px auto 20px 120px;
+		text-align: center;
+		border: 0 none;
+	}
+	
+	.tabNav{
+		overflow: hidden;
+		
+		.export{
+			width: 90px;
+			height: 30px;
+			line-height: 30px;
+			float: right;
+			text-align: center;
+			margin: 5px 20px 0 0;
+			color: #fff;
+			background: #109ba3;
+			border: 0 none;
+			display: block;
+		}
+		
+		.channel{
+			width: 90px;
+			height: 30px;
+			line-height: 30px;
+			float: left;
+			text-align: center;
+			margin: 5px 0 0 20px;
+			color: #fff;
+			background: #109ba3;
+			border: 0 none;
+			display: block;
+		}
+		
+		.verifyList{
+			margin: 20px auto 0 20px;
+			overflow: hidden;
+			float:left;
+			
+			>li{
+				width: 90px;
+				height: 40px;
+				line-height: 40px;
+				float: left;
+				text-align: center;
+				cursor: pointer;
+				
+				a{
+					color: #222;
+					display:block;
+					
+					&.selected{
+						background: #109ba3;
+						color: #fff;
+					}
+					
+				}
+				
+			}
+		}
+		
+		.search{
+			float:right;
+			margin:22.5px 20px 0 0;
+			
+			.filter{
+				border: 1px solid #222;
+				height: 30px;
+				line-height: 30px;
+			}
+			
+			.searches{
+				height: 30px;
+				line-height: 30px;
+				border: 0 none;
+				width: 60px;
+				text-align:center;
+				background: #109ba3;
+				color: #fff;
+			}
+		}
+	}
+	
+	
+	.uname_bar{
+		margin: 20px auto 20px;
+		border-top: 1px solid #000;
+    	border-left: 1px solid #000;
+    	
+		tr{
+			
+			border-bottom: 1px solid #000;
+			
+			th{
+				width: 210px;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+			    color: #fff;
+			    background: #109ba3;
+			    border-right: 1px solid #000;
+				
+			}
+			
+			td{
+				width: 210px;
+				height: 40px;
+				line-height: 40px;
+			    text-align: center;
+			    color: #222;
+			    background: #eb6588;
+			    border-right: 1px solid #000;
+			    
+			    a{
+			    	display:block;
+			    	color:#fff;
+			    	line-height: 40px;
+			    	text-align:center;
+			    }
+			    
+			    input{
+			    	width: 60px;
+			    	height: 30px;
+			    	line-height: 30px;
+			    	text-align: center;
+			    	color: #fff;
+			    	background: #109ba3;
+			    	border: 0 none;
+			    	border-radius: 5px;
+			    	margin: 0 10px;
+			    }
+			}
+		
+		}
+		
+	}
+	
+	.account_setting_list{
+      width: 100%;
+
+      >li{
+        height: 100px;
+        border-bottom: 1px solid #e7e7eb;
+
+        h4{
+          float: left;
+          margin: 0 20px;
+          font-weight: 400;
+          color: #8d8d8d;
+          height: 100px;
+          line-height: 100px;
+        }
+		
+		
+		.meta_content{
+          float: left;
+          height: 80px;
+          margin: 10px 0 0 20px;
+
+          &.hide{
+            display:none;
+          }
+
+          >input{
+            color: #222;
+            height: 30px;
+            line-height: 30px;
+            text-indent: 10px;
+            color: #222;
+            font-size: 14px;
+            margin: 25px 10px;
+          }
+
+          >img{
+            width: 80px;
+            height: 100%;
+          }
+        }
+
+        .change{
+          float: right;
+          width: 120px;
+          height: 30px;
+          margin: 35px 20px;
+          display: none;
+
+          >input{
+            background: #109ba3;
+            border: 0 none;
+            width: 50px;
+            height: 30px;
+            line-height: 30px;
+            color: #fff;
+          }
+        }
+
+        .meta_opr{
+          float: right;
+          height: 100px;
+          line-height: 100px;
+          color: #222;
+          font-size: 14px;
+          margin: 0 20px;
+          cursor: pointer;
+
+          &:hover{
+            color: #459ae9;
+          }
+        }
+      }
+    }
+
+  }
+
+  .page{
+    text-align: center;
+  }
+
+}
