@@ -1,0 +1,22 @@
+package com.Dibike.service;
+
+import java.util.List;
+
+import com.Dibike.entity.Bike_fault;
+import com.Dibike.entity.WeChat_payment;
+
+/**
+ * @author wuxiang
+ * @version 创建时间：2017年1月2日 下午4:29:49
+ * 
+ */
+public interface WechatService {
+	/**
+	 * 查询所有微信支付明细
+	 * @param 
+	 * @return  list
+	 */
+	public List<WeChat_payment>  findAllWeChat_payments();
+	
+	List<WeChat_payment> findList(int pageNum, int pageSize);
+}
