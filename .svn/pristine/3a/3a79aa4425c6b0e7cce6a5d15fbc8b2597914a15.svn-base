@@ -7,24 +7,6 @@ vm.controller('peopleList',['$scope','$http',function($scope,$http){
 	}).success(function(result){
 		$scope.people=result.data
 		
-		$scope.selectDel=function(manageID){
-			$http({
-				method:'POST',
-				params:{
-					"manageID":manageID
-	    		},
-				url:'/DibikeManagement/action/checkManage.do',
-				dataType:'json'
-			}).success(function(result){
-				$scope.privilege=result.data;
-				
-			}).error(function(result){
-				
-			});
-		}
-		
-		
-		
 	}).error(function(result){
 		
 	});

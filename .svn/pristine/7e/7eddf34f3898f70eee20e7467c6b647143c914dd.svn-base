@@ -27,11 +27,20 @@
                 <section class="section-box" ng-controller="peopleList">
                     <div class="mp_news__box">
                         <div class="title_bar">个人权限管理</div>
+                        <!-- <label class="dep_pri">
+                        	<div class="title">部门</div>
+                        	<ul class="dep_pri_list fl">
+                        		<li ng-repeat="data in department track by $index">
+                        			<input type="radio" name="department" ng-value="data.roleID" ng-checked="data.roleID == '3'" ng-focus="selectPeople(data.roleID)"/>
+                        			<span ng-bind="data.name"></span>
+                        		</li>
+							</ul>
+                        </label> -->
                         <label class="dep_pri">
                         	<div class="title">人员</div>
                         	<ul class="dep_pri_list fl">
 	                        	<li ng-repeat="data in people track by $index">
-	                        		<input type="radio" name="people" ng-value="data.manageID" ng-focus="selectDel(data.manageID)"/>
+	                        		<input type="radio" name="people" ng-value="data.manageID"/>
 	                        		<span ng-bind="data.name"></span>	
 	                        	</li>
                         	</ul>

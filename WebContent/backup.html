@@ -11,39 +11,40 @@
         <script type="text/javascript" src="./js/size.js"></script>
         <script type="text/javascript" src="./js/ng/angular.min.js"></script>
        	<script type="text/javascript">
-        	var vm=angular.module('manageApp',[]).run(function($rootScope){
-        		$rootScope.addManage= true;
+        	var vm=angular.module('backupApp',[]).run(function($rootScope){
+        		$rootScope.backup= true;
         	});
         </script>
         <script type="text/javascript" src="./js/component/loginout.js"></script>
         <script type="text/javascript" src="./js/component/menu.js"></script>
-        <script type="text/javascript" src="./js/user/manage.js"></script>
+        <script type="text/javascript" src="./js/other/back.js"></script>
 	</head>
-    <body ng-app='manageApp'>
+    <body ng-app='backupApp'>
         <header class="header" ng-include="'./component/header.html'" ng-controller='logList'></header>
         <section class="main">
             <div class="container">
                 <aside class="menu_box" ng-include="'./component/menu.html'" ng-controller='menuList'></aside>
-                <section class="section-box" ng-controller="manageList">
+                <section class="section-box" ng-controller="backupList">
                     <div class="mp_news__box">
-                        <div class="title_bar">增加管理员</div>
-                        <label class="dep_pri">
-                        	<div class="title">请选择部门:</div>
-                        	<ul class="dep_pri_list fl">
-                        		<li ng-repeat="data in privilege track by $index">
-                        			<input type="radio" name="department" ng-value="data.roleID"/>
-                        			<span ng-bind="data.name"></span>
-                        		</li>
-							</ul>
-                       	</label>
-                       	<div class="nameBox">
-							<span>用户名:</span>
-							<input type="text" name="" value="" class="name" placeholder="请输入用户名"/>
-						</div>
-						<input type="button" class="save" value="保存" ng-click="save()">
-					</div>
-					
-                </section>
+                        <div class="title_bar">数据备份</div>
+                        <table class="uname_bar">
+							<thead>
+								<tr>
+									<th>数据名</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="data in sql track by $index">
+									<td ng-bind="data[0]"></td>
+									<td>
+										<input type="button" value="下载" ng-click="upload(data[0],data[1])"/>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+                    </div>
+				</section>
             </div>
         </section>
         <footer class="footer" ng-include="'./component/footer.html'"></footer>

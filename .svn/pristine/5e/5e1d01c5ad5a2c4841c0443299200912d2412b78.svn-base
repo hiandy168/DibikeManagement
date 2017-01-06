@@ -1,0 +1,5 @@
+vm.controller('backupList',['$scope','$http',function($scope,$http){
+	
+	
+}]);
+

@@ -30,22 +30,7 @@ vm.controller('paymentAli',['$scope','$http',function($scope,$http){
 				var oMyForm = new FormData();
     			oMyForm.append("file", $('#file')[0].files[0]);
 				
-    			$http({
-    	            method:'POST',
-    	            url:'/DibikeManagement/import/excelAlipay_payment.do',
-    	            data: oMyForm,
-    	            headers: {
-    	            	'Content-Type':undefined
-    	            },
-    	            transformRequest:angular.identity,
-    	            async: true
-    	        }).success(function(response){
-    	        	alert('成功导入!!!')
-    	        }).error(function(){
-    	        	alert('文件有误!!!')
-    	        });
-    			
-    			/*$.ajax({
+    			$.ajax({
     				url:'/DibikeManagement/import/excelAlipay_payment.do',
     			    type: 'POST',
     			    cache: false,
@@ -57,7 +42,7 @@ vm.controller('paymentAli',['$scope','$http',function($scope,$http){
     				alert('成功导入!!!')
     			}).fail(function(res) {
     				alert('文件有误!!!')
-    			});*/
+    			});
 			}
 			
 			$scope.close=function(){

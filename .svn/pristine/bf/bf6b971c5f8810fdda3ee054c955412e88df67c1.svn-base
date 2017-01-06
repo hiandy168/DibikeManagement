@@ -43,7 +43,7 @@ public class FileUploadController {
 		return result;
 	}
 	
-	@RequestMapping(value = "/upload")
+	@RequestMapping(value = "/upload",method=RequestMethod.POST)
 	@ResponseBody
 	public Result upload(String path,String fileName,HttpServletResponse response) throws IOException{
 		Result result = new Result();

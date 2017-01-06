@@ -7,38 +7,52 @@ vm.controller('peopleList',['$scope','$http',function($scope,$http){
 	}).success(function(result){
 		$scope.people=result.data
 		
-		$scope.selectDel=function(manageID){
+	}).error(function(result){
+		
+	});
+	
+	
+	$http({
+		method:'POST',
+		url:'/DibikeManagement/action/queryAllRole.do',
+		dataType:'json',
+	}).success(function(result){
+		$scope.department=result.data;
+		
+		$scope.selectPeople=function(roleID){
+			var del=angular.element("input[name='department']:checked").val();
+			
 			$http({
 				method:'POST',
 				params:{
-					"manageID":manageID
-	    		},
-				url:'/DibikeManagement/action/checkManage.do',
-				dataType:'json'
+	    			"roleID":roleID
+	            },
+				url:'/DibikeManagement/action/queryManage.do',
 			}).success(function(result){
-				$scope.privilege=result.data;
+				$scope.people=result.data;
+				
+			}).error(function(result){
+					
+			});
+			
+			$http({
+				method:'POST',
+				params:{
+	    			"roleID":roleID
+	            },
+				url:'/DibikeManagement/action/queryAction.do',
+			}).success(function(result){
+				$scope.privilege=result.data
 				
 			}).error(function(result){
 				
 			});
 		}
 		
-		
-		
 	}).error(function(result){
 		
 	});
 	
-	$http({
-		method:'POST',
-		url:'/DibikeManagement/action/checkManage.do',
-		dataType:'json'
-	}).success(function(result){
-		$scope.privilege=result.data;
-		
-	}).error(function(result){
-		
-	});
 	
 	
 	$scope.save=function(){
@@ -53,13 +67,9 @@ vm.controller('peopleList',['$scope','$http',function($scope,$http){
 			}
 		};
 		
-		if(people==null){
-			alert('请选择用户再提交！！！')
-		}else if(arrPri.length==0){
-			alert('请选择权限再提交！！！')
+		if(people==null || arrPri.length==0){
+			alert('请选择用户和权限再提交！！！')
 		}else{
-			console.log(people);
-			console.log(arrPri);
 			$http({
 				method:'POST',
 				params:{

@@ -270,6 +270,9 @@ public class ActionController {
 			List<Action> action = actionService.findByRoleIDAndPid(roleID,pid);
 			//该父节点下，，该部门没有权限
 			if(action==null){
+				for(Action actiona:actionAll){
+					actiona.setStatus("2");
+				}
 				list.add(pidNameList);
 				list.add(actionAll);
 				lists.add(list);
@@ -283,6 +286,8 @@ public class ActionController {
 					String actionID2 = actionb.getActionID();
 					if(actionID2.equals(actionID1)){
 						actiona.setStatus("1");
+					}else{
+						actiona.setStatus("2");
 					}
 				}
 			}
@@ -319,6 +324,9 @@ public class ActionController {
 			List<Action> action = actionService.findByManageIDAndPid(manageID,pid);
 			//该父节点下，，该个人没有权限
 			if(action==null){
+				for(Action actiona:actionAll){
+					actiona.setStatus("2");
+				}
 				list.add(pidNameList);
 				list.add(actionAll);
 				lists.add(list);
@@ -332,6 +340,8 @@ public class ActionController {
 					String actionID2 = actionb.getActionID();
 					if(actionID2.equals(actionID1)){
 						actiona.setStatus("1");
+					}else{
+						actiona.setStatus("2");
 					}
 				}
 			}

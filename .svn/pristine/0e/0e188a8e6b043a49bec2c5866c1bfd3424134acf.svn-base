@@ -37,8 +37,7 @@ vm.controller('paymentAli',['$scope','$http',function($scope,$http){
     	            headers: {
     	            	'Content-Type':undefined
     	            },
-    	            transformRequest:angular.identity,
-    	            async: true
+    	            transformRequest:angular.identity 
     	        }).success(function(response){
     	        	alert('成功导入!!!')
     	        }).error(function(){
