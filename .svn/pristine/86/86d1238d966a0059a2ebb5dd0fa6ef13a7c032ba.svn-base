@@ -18,6 +18,7 @@ public interface AlipayPaymentService {
 
 	public void saveAlipay_payment(Alipay_payment alipayPayment);
 	
-	public List<Alipay_payment> findList(int pageNum, int pageSize);
+	
+	List<Alipay_payment> findList(int pageNum, int pageSize);
 
 }

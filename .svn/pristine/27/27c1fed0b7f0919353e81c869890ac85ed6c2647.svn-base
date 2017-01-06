@@ -18,5 +18,5 @@ public interface WechatService {
 	 */
 	public List<WeChat_payment>  findAllWeChat_payments();
 	
-	public List<WeChat_payment> findList(int pageNum, int pageSize);
+	List<WeChat_payment> findList(int pageNum, int pageSize);
 }

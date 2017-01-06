@@ -12,39 +12,38 @@
         <script type="text/javascript" src="./js/size.js"></script>
         <script type="text/javascript" src="./js/ng/angular.min.js"></script>
        	<script type="text/javascript">
-        	var vm=angular.module('AllMembers',[]).run(function($rootScope){
-        		$rootScope.findAllMembers = true;
+        	var vm=angular.module('ChatPayments',[]).run(function($rootScope){
+        		$rootScope.findweChatPayments= true;
         	});
         </script>
         <script type="text/javascript" src="./js/component/loginout.js"></script>
         <script type="text/javascript" src="./js/component/menu.js"></script>
-        <script type="text/javascript" src="./js/member/allMembers.js"></script>
+        <script type="text/javascript" src="./js/payment/chatPayments.js"></script>
 	</head>
-    <body ng-app='AllMembers'>
+    <body ng-app='ChatPayments'>
         <header class="header" ng-include="'./component/header.html'" ng-controller='logList'></header>
         <section class="main">
             <div class="container">
                 <aside class="menu_box" ng-include="'./component/menu.html'" ng-controller='menuList'></aside>
-                <section class="section-box" ng-controller="membersList">
+                <section class="section-box" ng-controller="PaymentsList">
                     <div class="mp_news__box">
-                        <div class="title_bar">用户信息</div>
+                        <div class="title_bar">微信支付明细</div>
+                        <div class="tabNav" ng-include="'./component/export.html'"></div>
                         <table class="uname_bar">
 							<thead>
-								<th ng-bind="'姓名'"></th>
-							  	<th ng-bind="'手机号'"></th>
-							  	<th ng-bind="'创建时间'"></th>
-							  	<th ng-bind="'状态'"></th>
-							  	<th ng-bind="'最后登录时间'"></th>
+								<th ng-bind="'商户订单号'"></th>
+							  	<th ng-bind="'微信支付订单号'"></th>
+							  	<th ng-bind="'总金额'"></th>
+							  	<th ng-bind="'支付完成时间'"></th>
 							  	<th ng-bind="'备注'"></th>
 							</thead>
 							<tbody>
-								<tr ng-repeat="data in member track by $index">
-									<td ng-bind="data.name"></td>
-									<td ng-bind="data.phone"></td>
-									<td ng-bind="data.createDate"></td>
-									<td ng-bind="data.status"></td>
-									<td ng-bind="data.lastTime"></td>
-									<td ng-bind="data.remark"></td>
+								<tr ng-repeat="data in payments track by $index">
+									<td ng-bind="data.out_trade_no"></td>
+									<td ng-bind="data.transaction_id"></td>
+									<td ng-bind="data.total_fee"></td>
+									<td ng-bind="data.time_end"></td>
+									<td ng-bind="data.bank1"></td>
 								</tr>
 							</tbody>
 						</table>

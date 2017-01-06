@@ -2,7 +2,6 @@
 @import './mixin.less';
 @import './execl.less';
 @import './public.less';
-@import './export.less';
 @import './page.less';
 
 
@@ -306,6 +305,32 @@
 	
 	.tabNav{
 		overflow: hidden;
+		
+		.export{
+			width: 90px;
+			height: 30px;
+			line-height: 30px;
+			float: right;
+			text-align: center;
+			margin: 5px 20px 0 0;
+			color: #fff;
+			background: #109ba3;
+			border: 0 none;
+			display: block;
+		}
+		
+		.channel{
+			width: 90px;
+			height: 30px;
+			line-height: 30px;
+			float: left;
+			text-align: center;
+			margin: 5px 0 0 20px;
+			color: #fff;
+			background: #109ba3;
+			border: 0 none;
+			display: block;
+		}
 		
 		.verifyList{
 			margin: 20px auto 0 20px;

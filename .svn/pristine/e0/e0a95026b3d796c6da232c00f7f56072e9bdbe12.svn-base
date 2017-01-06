@@ -33,5 +33,5 @@ public interface MemberInfoService {
 	 *  @param memberInfo
 	 */
 	public List<MemberInfo> findAllMemberInfos();
-	public List<MemberInfo> findList(int pageNum, int pageSize);
+	List<MemberInfo> findList(int pageNum, int pageSize);
 }

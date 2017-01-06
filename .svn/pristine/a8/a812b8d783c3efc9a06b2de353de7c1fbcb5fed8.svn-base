@@ -28,11 +28,13 @@ vm.controller('paymentAli',['$scope','$http',function($scope,$http){
 					$scope.page=result.data[1];
 					$scope.payments=result.data[2];
 					
+					
 				}).error(function(result){
 						
 				});
 		    	 
-		    }
+		    	
+		     }
 		})
 		
 		

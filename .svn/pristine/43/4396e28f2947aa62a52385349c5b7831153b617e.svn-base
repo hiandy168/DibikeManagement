@@ -27,31 +27,26 @@ vm.controller('paymentAli',['$scope','$http',function($scope,$http){
 					$scope.count=result.data[0];
 					$scope.page=result.data[1];
 					$scope.payments=result.data[2];
-					
 				}).error(function(result){
 						
 				});
-		    	 
-		    }
+		     }
 		})
 		
-		
 		$scope.export=function(){
-			var number=angular.element('.current').html();
-			
-   		 	$http({
+			$http({
 				method:'POST',
-				params:{
-					"number":number,
-				},
 				url:'/DibikeManagement/export/excelAlipay_payment.do',
 				dataType:'text'
 			}).success(function(result){
-				document.location.href='/DibikeManagement/export/excelAlipay_payment.do?number='+number
-			    
+				if(status==0){
+					alert('导出成功!!!');
+					document.location.href='/DibikeManagement/export/excelAlipay_payment.do'
+			    }
 			}).error(function(result){
 				
 			});
+			
 		}
 		
 		$scope.channel=function(){
@@ -76,7 +71,20 @@ vm.controller('paymentAli',['$scope','$http',function($scope,$http){
     	        	alert('文件有误!!!')
     	        });
     			
-    		}
+    			/*$.ajax({
+    				url:'/DibikeManagement/import/excelAlipay_payment.do',
+    			    type: 'POST',
+    			    cache: false,
+    			    data: oMyForm,
+    			    processData: false,
+    			    contentType: false,
+    			    async: false
+    			}).done(function(res) {
+    				alert('成功导入!!!')
+    			}).fail(function(res) {
+    				alert('文件有误!!!')
+    			});*/
+			}
 			
 			$scope.close=function(){
 				angular.element('.execl_fix').hide();
