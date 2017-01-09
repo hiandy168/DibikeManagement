@@ -67,6 +67,7 @@
 				<value>com.Dibike.entity.H5_Page</value>
 				<value>com.Dibike.entity.WeChat_payment</value>
 				<value>com.Dibike.entity.Alipay_payment</value>
+				<value>com.Dibike.entity.Dictionaries_table</value>
 			</list>
 		</property>
 

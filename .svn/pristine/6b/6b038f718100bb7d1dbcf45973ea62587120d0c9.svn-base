@@ -1,0 +1,17 @@
+vm.controller('promotionList',['$scope','$http',function($scope,$http){
+	
+	$http({
+		method:'POST',
+		/*params:{
+			"deviceid":
+        },*/
+		url:'/DibikeManagement/push/pushMessage.do',
+		dataType:'json'
+	}).success(function(result){
+		console.log(result.data);
+		
+	}).error(function(result){
+			
+	});
+	
+}]);

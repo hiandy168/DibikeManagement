@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="./css/bike.css">
+        <script type="text/javascript" src="./js/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/html5shiv.js"></script>
+        <script type="text/javascript" src="./js/size.js"></script>
+        <script type="text/javascript" src="./js/ng/angular.min.js"></script>
+       	<script type="text/javascript">
+        	var vm=angular.module('importBikeApp',[]).run(function($rootScope){
+        		$rootScope.importBike= true;
+        	});
+        </script>
+        <script type="text/javascript" src="./js/component/loginout.js"></script>
+        <script type="text/javascript" src="./js/component/menu.js"></script>
+        <script type="text/javascript" src="./js/bike/importBike.js"></script>
+	</head>
+    <body ng-app='importBikeApp'>
+        <header class="header" ng-include="'./component/header.html'" ng-controller='logList'></header>
+        <section class="main">
+            <div class="container">
+                <aside class="menu_box" ng-include="'./component/menu.html'" ng-controller='menuList'></aside>
+                <section class="section-box" ng-controller="importBikeList">
+                    <div class="mp_news__box">
+                        <div class="title_bar">导入车辆</div>
+                        <div class="tabNav" ng-include="'./component/export.html'"></div>
+                        <section class="execl_fix">
+				             <div class="execl_box">
+				             	<div class="execl_header">execl文件数据导入</div>
+				             	<form id="form" method="post" enctype="multipart/form-data">
+				             		<div class="execl_main">
+				             			<div class="file">
+				             				<span>请选择文件:</span>
+				             				<input type="text" class="filt" disabled="true"/>
+				             				<input type="file" id="file" value="浏览" name="files" accept="application/vnd.ms-excel"/>
+				             			</div>
+									</div>
+					             	<div class="execl_footer">
+					             		<input type="submit" value="导入" class="style" ng-click="files()"/>
+					             		<input type="button" value="关闭" class="style" ng-click="close()"/>
+					             	</div>
+				             	</form>
+				             </div>
+				        </section> 
+                   	</div>
+                </section>
+            </div>
+        </section>
+        <footer class="footer" ng-include="'./component/footer.html'"></footer>
+        
+    </body>
+</html>
