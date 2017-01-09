@@ -1,0 +1,86 @@
+vm.controller('bikeMap',['$scope','$http',function($scope,$http){
+	
+	$http({
+		method:'POST',
+		url:'/DibikeManagement/bike/query.do',
+		dataType:'json',
+	}).success(function(result){
+		
+		angular.forEach(result.data,function(value,i){
+			console.log(value.lat+','+value.lng)
+			
+			var mapObj = new AMap.Map('container',{
+				resizeEnable: true,
+				zoom: 17,
+				isHotspot: true,
+			});
+			
+			mapObj.plugin(["AMap.Geolocation","AMap.ToolBar","AMap.Scale","AMap.MapType","AMap.OverView"],
+					function(){
+						mapObj.addControl(new AMap.ToolBar({
+							position:'LT',
+							offset:new AMap.Pixel(20,20),
+							ruler:false,
+							noIpLocate:true,
+							liteStyle:false
+							
+						}));
+						
+						mapObj.addControl(new AMap.Scale({
+							position:'LB',
+							offset: new AMap.Pixel(30,30),
+						}));
+						
+						mapObj.addControl(new AMap.OverView({
+							isOpen:true,
+							visible:true
+						}));
+						
+						mapObj.addControl(new AMap.Geolocation({
+							enableHighAccuracy: true,
+							buttonPosition:'LT',
+							buttonOffset: new AMap.Pixel(20,150),
+							convert: true, 
+							showButton: true, 
+							showMarker: true,        
+							showCircle: true,        
+							panToLocation: true,     
+							zoomToAccuracy: true
+						}));
+							
+						mapObj.addControl(new AMap.MapType({
+							defaultType: 0,
+							showTraffic: false,
+							showRoad: false
+						}));
+							
+				});
+			
+			AMap.service(["AMap.PlaceSearch"], function() {
+			     var placeSearch = new AMap.PlaceSearch({ 
+			    	city: "021", 
+			    	map: mapObj,
+			    	panel:"panel",
+			    	pageSize: 5,
+			        pageIndex: 1,
+			    });
+			    
+			    var cpoint = value.lat+','+value.lng;
+			    placeSearch.searchNearBy('', cpoint, 200, function(status, result) {
+			    	
+		        });
+			});
+			
+		});
+		
+	}).error(function(result){
+		
+	});
+	
+	
+	
+	
+	
+	
+	
+}]);

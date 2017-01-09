@@ -1,0 +1,99 @@
+vm.controller('bikeMap',['$scope','$http',function($scope,$http){
+	
+	$http({
+		method:'POST',
+		url:'/DibikeManagement/bike/query.do',
+		dataType:'json',
+	}).success(function(result){
+		var mapObj = new AMap.Map('container',{
+			resizeEnable: true,
+			zoom: 17,
+			center: [121.502079,31.27404],
+			isHotspot: true,
+		});
+		
+		
+		mapObj.plugin(["AMap.Marker","AMap.Geolocation","AMap.ToolBar","AMap.Scale","AMap.MapType","AMap.OverView"],
+			function(){
+			
+				angular.forEach(result.data,function(value,i){
+					console.log(value.lng+','+value.lat);
+					/*mapObj.addControl(new AMap.Marker({
+						map:mapObj,
+						position:value.lng+','+value.lat
+					}));*/
+				})
+				
+				mapObj.addControl(new AMap.Marker({
+					map:mapObj,
+					position:[121.502079,31.27404]
+				}));
+				
+				
+				mapObj.addControl(new AMap.ToolBar({
+					position:'LT',
+					offset:new AMap.Pixel(20,20),
+					ruler:false,
+					noIpLocate:true,
+					liteStyle:false
+				}));
+					
+				mapObj.addControl(new AMap.Scale({
+					position:'LB',
+					offset: new AMap.Pixel(30,30),
+				}));
+					
+				mapObj.addControl(new AMap.OverView({
+					isOpen:true,
+					visible:true
+				}));
+					
+				
+				mapObj.addControl(new AMap.MapType({
+					defaultType: 0,
+					showTraffic: false,
+					showRoad: false
+				}));
+				
+		});
+		
+		/*AMap.service(["AMap.PlaceSearch","AMap.Geocoder"], function() {
+		    var placeSearch = new AMap.PlaceSearch({ 
+		        pageSize: 5,
+		        city: "021", 
+		        map: mapObj,
+		        panel: "panel"
+		    });
+		    
+		    //placeSearch.search('贝庆')
+		    
+		    var geocoder = new AMap.Geocoder({
+			   city: "021"
+		    });
+		   
+		   
+		   var arr=[];
+		   angular.forEach(result.data,function(value,i){
+				geocoder.getAddress(value.lng+','+value.lat, function(status,result) {
+				    if (status === 'complete' && result.info === 'OK') {
+				    	console.log(result.regeocode.formattedAddress);
+				    	placeSearch.search('上海市虹口区嘉兴路街道大连路1615号鞍山七村小区 ');
+				    }else{
+				         
+				    }
+				});
+				this.push(value.lng+','+value.lat);
+				
+		   },arr);
+		   console.log(arr);
+		   
+		});*/
+		
+		
+	
+	}).error(function(result){
+		
+	});
+	
+	
+}]);

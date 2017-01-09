@@ -1,0 +1,136 @@
+@import './variables.less';
+@import './mixin.less';
+@import './public.less';
+
+.section-box{
+    width: 970px;
+    float: right;
+    overflow: hidden;
+    background: @background;
+    padding: 20px;
+
+  	.mp_news__box{
+	    overflow: hidden;
+	    border: 1px solid #e7e7eb;
+	    position: relative;
+
+	    .title_bar{
+	      	font-weight: 400;
+	      	line-height: 40px;
+	      	background: #f4f5f9;
+	      	padding: 0 20px;
+	     	.mp_news-text;
+	
+	    }
+	    
+	    .save{
+			width: 80px;
+			height: 30px;
+			line-height: 30px;
+			color:#fff;
+			background: #109ba3;
+			text-align:center;
+			border:0 none;
+			border-radius:5px;
+			margin: 20px auto 20px;
+			display:block;
+			overflow: hidden;
+		}
+		
+		.demand{
+			margin:20px 0 0 20px;
+			overflow: hidden;
+			
+			.title{
+				width:100%;
+				line-height: 40px;	
+				color: #222;
+	    		font-size: 14px;
+	    		font-weight: normal;
+	    		margin:0 0 0 20px;
+	    		overflow: hidden;
+			}
+			
+			.addcash{
+		    	margin:20px 0 0 20px;
+		    	overflow: hidden;
+		    	
+		    	span{
+		    		line-height: 30px;	
+					color: #222;
+		    		font-size: 14px;
+		    		font-weight: normal;
+		    	}
+		    	
+		    	input{
+		    		line-height: 30px;	
+					color: #222;
+		    		font-size: 14px;
+		    		height: 30px;
+		    		border: 1px solid #222;
+		    		margin: 0 10px;
+		    		text-indent: 20px;
+		    	}
+		    }
+			
+			.deposit_bar{
+				margin: 20px auto 20px;
+				border-top: 1px solid #000;
+		    	border-left: 1px solid #000;
+		    	
+				tr{
+					
+					border-bottom: 1px solid #000;
+					
+					th{
+						width: 210px;
+						height: 40px;
+						line-height: 40px;
+						text-align: center;
+					    color: #fff;
+					    background: #109ba3;
+					    border-right: 1px solid #000;
+						
+					}
+					
+					td{
+						width: 210px;
+						height: 40px;
+						line-height: 40px;
+					    text-align: center;
+					    color: #222;
+					    background: #eb6588;
+					    border-right: 1px solid #000;
+					    
+					    a{
+					    	display:block;
+					    	color:#fff;
+					    	line-height: 40px;
+					    	text-align:center;
+					    }
+					    
+					    input{
+					    	width: 60px;
+					    	height: 30px;
+					    	line-height: 30px;
+					    	text-align: center;
+					    	color: #fff;
+					    	background: #109ba3;
+					    	border: 0 none;
+					    	border-radius: 5px;
+					    	margin: 0 10px;
+					    }
+					}
+				
+				}
+				
+			}
+		}
+	}
+
+}
+
+
+
+
+
