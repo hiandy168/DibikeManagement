@@ -1,0 +1,98 @@
+vm.controller('bikeMap',['$scope','$http',function($scope,$http){
+	
+	$http({
+		method:'POST',
+		url:'/DibikeManagement/bike/query.do',
+		dataType:'json',
+	}).success(function(result){
+		var mapObj = new AMap.Map('container',{
+			resizeEnable: true,
+			center:[result.data[0].lng, result.data[0].lat],
+			zoom: 17,
+			isHotspot: true,
+		});
+		
+		mapObj.plugin(["AMap.Marker","AMap.Geolocation","AMap.ToolBar","AMap.Scale","AMap.MapType","AMap.OverView"],
+			function(){
+				mapObj.addControl(new AMap.Marker({
+					map:mapObj,
+					position:[result.data[0].lng,result.data[0].lat]
+				}));
+				
+				
+				mapObj.addControl(new AMap.ToolBar({
+					
+					position:'LT',
+					offset:new AMap.Pixel(20,20),
+					ruler:false,
+					noIpLocate:true,
+					liteStyle:false
+				}));
+					
+				mapObj.addControl(new AMap.Scale({
+					position:'LB',
+					offset: new AMap.Pixel(30,30),
+				}));
+					
+				mapObj.addControl(new AMap.OverView({
+					isOpen:true,
+					visible:true
+				}));
+					
+				mapObj.addControl(new AMap.MapType({
+					defaultType: 0,
+					showTraffic: false,
+					showRoad: false
+				}));
+				
+		});
+		
+		AMap.service(["AMap.PlaceSearch","AMap.Geocoder"], function() {
+		    var placeSearch = new AMap.PlaceSearch({ 
+		        pageSize: 5,
+		        city: "021", 
+		        map: mapObj,
+		        panel: "panel"
+		    });
+		    
+		   var geocoder = new AMap.Geocoder({
+			   city: "021",
+			  
+		   });
+		  
+		  placeSearch.search('贝庆单车');
+		  
+		  angular.forEach(result.data,function(value,i){
+			  if(value.lng==null && value.lat==null){
+				 
+			  }else{
+			  		geocoder.getAddress(value.lng+','+value.lat,function(status,result){
+					  if (status === 'complete' && result.info === 'OK'){
+						  geocoder_CallBack(result);
+					  }else{
+						         
+					  }
+				  })
+			  }
+		  });
+		  
+		  var str='';
+		  
+		  function geocoder_CallBack(data) {
+			  str+=data.regeocode.formattedAddress+'|';
+			  console.log(str);
+		      placeSearch.search(data.regeocode.formattedAddress);
+		  }
+		  
+		  //console.log(str);
+		  
+	});
+		
+		
+	
+	}).error(function(result){
+		
+	});
+	
+	
+}]);
