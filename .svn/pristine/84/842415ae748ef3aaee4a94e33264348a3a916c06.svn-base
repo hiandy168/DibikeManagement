@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="./css/user.css">
+        <script type="text/javascript" src="./js/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/jquery.page.js"></script>
+        <script type="text/javascript" src="./js/html5shiv.js"></script>
+        <script type="text/javascript" src="./js/size.js"></script>
+        <script type="text/javascript" src="./js/ng/angular.min.js"></script>
+       	<script type="text/javascript">
+        	var vm=angular.module('ChatPayments',[]).run(function($rootScope){
+        		$rootScope.findweChatPayments= true;
+        	});
+        </script>
+        <script type="text/javascript" src="./js/component/loginout.js"></script>
+        <script type="text/javascript" src="./js/component/menu.js"></script>
+        <script type="text/javascript" src="./js/payment/chatPayments.js"></script>
+	</head>
+    <body ng-app='ChatPayments'>
+        <header class="header" ng-include="'./component/header.html'" ng-controller='logList'></header>
+        <section class="main">
+            <div class="container">
+                <aside class="menu_box" ng-include="'./component/menu.html'" ng-controller='menuList'></aside>
+                <section class="section-box" ng-controller="PaymentsList">
+                    <div class="mp_news__box">
+                        <div class="title_bar" ng-bind="'微信支付明细'"></div>
+                        <div class="tabNav" ng-include="'./component/export.html'"></div>
+                        <section class="execl_fix">
+				             <div class="execl_box">
+				             	<div class="execl_header" ng-bind="'execl文件数据导入'"></div>
+				             	<form id="form" method="post" enctype="multipart/form-data">
+				             		<div class="execl_main">
+				             			<div class="file">
+				             				<span ng-bind="'请选择文件:'"></span>
+				             				<input type="text" class="filt" disabled="true"/>
+				             				<input type="file" id="file" ng-value="'浏览'" name="files" accept="application/vnd.ms-excel"/>
+				             			</div>
+									</div>
+					             	<div class="execl_footer">
+					             		<input type="submit" ng-value="'导入'" class="style" ng-click="files()"/>
+					             		<input type="button" ng-value="'关闭'" class="style" ng-click="close()"/>
+					             	</div>
+				             	</form>
+				             </div>
+				        </section> 
+                        <table class="uname_bar">
+							<thead>
+								<th ng-bind="'商户订单号'"></th>
+							  	<th ng-bind="'微信支付订单号'"></th>
+							  	<th ng-bind="'总金额'"></th>
+							  	<th ng-bind="'支付完成时间'"></th>
+							  	<th ng-bind="'备注'"></th>
+							</thead>
+							<tbody>
+								<tr ng-repeat="data in payments track by $index">
+									<td ng-bind="data.out_trade_no"></td>
+									<td ng-bind="data.transaction_id"></td>
+									<td ng-bind="data.total_fee"></td>
+									<td ng-bind="data.time_end"></td>
+									<td ng-bind="data.bank1"></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="count">
+							<span ng-bind="'总共'"></span>
+							<span ng-bind="count"></span>
+							<span ng-bind="'条记录，一共'"></span>
+							<span ng-bind="page"></span>
+							<span ng-bind="'页'"></span>
+						</div>
+						<div class="tcdPageCode"></div>
+					</div>
+                </section>
+            </div>
+        </section>
+        <footer class="footer" ng-include="'./component/footer.html'"></footer>
+    </body>
+</html>
