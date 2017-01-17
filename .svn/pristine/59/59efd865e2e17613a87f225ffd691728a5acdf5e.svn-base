@@ -1,0 +1,50 @@
+vm.controller('membersList',['$scope','$http',function($scope,$http){
+	
+	$http({
+		method:'POST',
+		params:{
+			"number":1,
+		},
+		url:'/DibikeManagement/member/findAllMembers.do',
+		dataType:'json'
+	}).success(function(result){
+		$scope.count=result.data[0];
+		$scope.page=result.data[1];
+		$scope.member=result.data[2];
+		
+		angular.forEach($scope.member,function(value,i){
+			var reg =/^[0-9]*$/;
+			if(!reg.test(value.name)){
+				value.name=value.name
+			}else{
+				value.name=''
+			}
+		});
+		
+		
+		$(".tcdPageCode").createPage({
+			 pageCount:$scope.page,
+		     current:1,
+		     backFn:function(page){
+		    	 $http({
+					method:'POST',
+					params:{
+						"number":page,
+					},
+					url:'/DibikeManagement/member/findAllMembers.do',
+					dataType:'json',
+				}).success(function(result){
+					$scope.count=result.data[0];
+					$scope.page=result.data[1];
+					$scope.member=result.data[2];
+				}).error(function(result){
+						
+				});
+		     }
+		})
+		
+	}).error(function(result){
+		
+	});
+	
+}]);

@@ -1,0 +1,42 @@
+package com.Dibike.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.Dibike.common.BaseDao;
+import com.Dibike.common.Result;
+
+@Controller
+@RequestMapping("/query")
+public class QueryController {
+	private static Logger logger = Logger.getLogger(QueryController.class);
+	@Resource
+	private BaseDao<?> baseDao;
+	private int pageSize = 5;// 每页显示条数
+	
+	@RequestMapping(value = "/queryBystatement")
+	@ResponseBody
+	public Result query(String statement,String number){
+		logger.info("-------查询功能------");
+		Result result = new Result();
+		int pageNum = Integer.parseInt(number);
+		int totalRow =baseDao.find("select "+statement).size();
+		int totalPage = totalRow / pageSize + (totalRow % pageSize > 0 ? 1 : 0);// 总页数
+		List list = baseDao.find("select "+statement,pageNum, pageSize);
+		List lists = new ArrayList();
+		lists.add(totalRow);
+		lists.add(totalPage);
+		lists.add(list);
+		result.setData(lists);
+		result.setStatus("0");
+		return result;
+	}
+
+}

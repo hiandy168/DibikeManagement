@@ -30,12 +30,10 @@
                         <div class="title_bar" ng-bind="'查询功能'"></div>
                         <textarea class="inquireText"></textarea>
                         <input type="button" class="save" ng-value="'提交'" ng-click="submit()">
-                        <ul class="sqlList">
-							<li ng-repeat='data in sql' ng-bind="data"></li>
+                        <ul>
+							<li></li>
 						</ul>
-						<div class="page_box">
-							<div ng-include="'./component/page.html'"></div>
-						</div>	
+						<div ng-include="'./component/page.html'"></div>
 					</div>
                 </section>
             </div>

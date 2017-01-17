@@ -111,17 +111,10 @@
 	}
 	
 	.sqlList{
-		width: 800px;
-		margin: 20px auto 20px;
-		
-		li{
-			line-height: 40px;
-			font-weight: 400;
-			font-size: 14px;
-			color: #222;
-			background: #eb6588;
-			text-align:center;
-		}
+		margin: 20px auto 20px 20px;
+		line-height: 25px;
+		font-weight: 400;
+		font-size: 14px;
 	}
 	
 	.dep_pri{

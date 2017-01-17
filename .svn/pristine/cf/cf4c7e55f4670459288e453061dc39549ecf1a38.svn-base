@@ -16,8 +16,6 @@ vm.controller('inquireList',['$scope','$http',function($scope,$http){
 			}).success(function(result){
 				if(status==0){
 					angular.element('.page_box').show();
-					angular.element('.sqlList').show();
-					
 					$scope.count=result.data[0];
 					$scope.page=result.data[1];
 					$scope.sql=result.data[2];
@@ -39,10 +37,8 @@ vm.controller('inquireList',['$scope','$http',function($scope,$http){
 								$scope.page=result.data[1];
 								$scope.sql=result.data[2];
 								angular.element('.page_box').show();
-								angular.element('.sqlList').show();
 							}).error(function(result){
 								angular.element('.page_box').hide();
-								angular.element('.sqlList').hide();
 							});
 					     }
 					})
@@ -52,9 +48,8 @@ vm.controller('inquireList',['$scope','$http',function($scope,$http){
 				}
 				
 			}).error(function(result){
-				alert('查无结果!!!');
+				console.log('查无结果!!!');
 				angular.element('.page_box').hide();
-				angular.element('.sqlList').hide();
 			});
 		}
 		
