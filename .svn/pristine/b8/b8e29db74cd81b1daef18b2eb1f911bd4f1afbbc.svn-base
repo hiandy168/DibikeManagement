@@ -1,0 +1,33 @@
+vm.controller('inquireList',['$scope','$http',function($scope,$http){
+	
+	$scope.submit=function(){
+		var text=angular.element('.inquireText').val();
+		
+		if(text.length==0){
+			alert('请输入内容，再提交!!!')
+		}else{
+			$http({
+				method:'POST',
+				params:{
+					"statement":text,
+					"number":1
+		        },
+				url:'/DibikeManagement/query/queryBystatement.do'
+			}).success(function(result){
+				if(status==0){
+					console.log(result.data)
+				}else{
+					
+				}
+				
+			}).error(function(result){
+					
+			});
+		}
+		
+	}
+	
+	
+	
+}]);
+

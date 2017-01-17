@@ -1,45 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="./css/user.css">
+        <link rel="stylesheet" type="text/css" href="./css/cash.css">
         <script type="text/javascript" src="./js/jquery.min.js"></script>
-        <script type="text/javascript" src="./js/jquery.page.js"></script>
         <script type="text/javascript" src="./js/html5shiv.js"></script>
         <script type="text/javascript" src="./js/size.js"></script>
         <script type="text/javascript" src="./js/ng/angular.min.js"></script>
        	<script type="text/javascript">
-        	var vm=angular.module('inquireApp',[]).run(function($rootScope){
-        		$rootScope.inquire= true;
+        	var vm=angular.module('promotionApp',[]).run(function($rootScope){
+        		$rootScope.promotion= true;
         	});
         </script>
         <script type="text/javascript" src="./js/component/loginout.js"></script>
         <script type="text/javascript" src="./js/component/menu.js"></script>
-        <script type="text/javascript" src="./js/other/inquire.js"></script>
+        <script type="text/javascript" src="./js/other/promotion.js"></script>
 	</head>
-    <body ng-app='inquireApp'>
+    <body ng-app='promotionApp'>
         <header class="header" ng-include="'./component/header.html'" ng-controller='logList'></header>
         <section class="main">
             <div class="container">
                 <aside class="menu_box" ng-include="'./component/menu.html'" ng-controller='menuList'></aside>
-                <section class="section-box" ng-controller="inquireList">
+                <section class="section-box" ng-controller="promotionList">
                     <div class="mp_news__box">
-                        <div class="title_bar" ng-bind="'查询功能'"></div>
-                        <textarea class="inquireText"></textarea>
-                        <input type="button" class="save" ng-value="'提交'" ng-click="submit()">
-                        <ul class="sqlList">
-							<li ng-repeat='data in sql' ng-bind="data"></li>
-						</ul>
-						<div class="page_box">
-							<div ng-include="'./component/page.html'"></div>
-						</div>	
-					</div>
+                        <div class="title_bar" ng-bind="'结费推送'"></div>
+                    </div>
                 </section>
             </div>
         </section>
         <footer class="footer" ng-include="'./component/footer.html'"></footer>
+        
     </body>
 </html>
