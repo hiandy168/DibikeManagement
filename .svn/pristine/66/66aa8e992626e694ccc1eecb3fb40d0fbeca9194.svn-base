@@ -11,7 +11,8 @@
        	<script type="text/javascript" src="./js/html5shiv.js"></script>
         <script type="text/javascript" src="./js/size.js"></script>
         <script type="text/javascript" src="./js/ng/angular.min.js"></script>
-        <script type="text/javascript">
+        <script type="text/javascript" src="./js/fetch.js"></script>
+       	<script type="text/javascript">
         	var vm=angular.module('paymentAli',[]).run(function($rootScope){
         		$rootScope.findAliPayments= true;
         	});

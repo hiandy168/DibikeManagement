@@ -10,7 +10,7 @@ vm.controller('roleList',['$scope','$http',function($scope,$http){
 	$scope.save=function(){
 		var name=angular.element("input.name").val();
 		
-		var reg = /^[\u4e00-\u9fa5]{2,4}$/;
+		var reg = /^[\u4E00-\u9FA5\uF900-\uFA2D]{2,4}$/;
 		
 		if(!reg.test(name)){
 			alert('请输入2-4个汉字');

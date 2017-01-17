@@ -12,8 +12,6 @@ vm.controller('detailList',['$scope','$http',function($scope,$http){
 		$scope.page=result.data[1];
 		$scope.detail=result.data[2];
 		
-		
-		
 		$(".tcdPageCode").createPage({
 	        pageCount:$scope.page,
 	        current:1,

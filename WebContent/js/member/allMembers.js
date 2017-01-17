@@ -6,15 +6,15 @@ vm.controller('membersList',['$scope','$http',function($scope,$http){
 			"number":1,
 		},
 		url:'/DibikeManagement/member/findAllMembers.do',
-		dataType:'json',
+		dataType:'json'
 	}).success(function(result){
 		$scope.count=result.data[0];
 		$scope.page=result.data[1];
 		$scope.member=result.data[2];
 		
 		angular.forEach($scope.member,function(value,i){
-			var reg =/[\u4e00-\u9fa5]/g;
-			if(reg.test(value.name)){
+			var reg =/^[0-9]*$/;
+			if(!reg.test(value.name)){
 				value.name=value.name
 			}else{
 				value.name=''
