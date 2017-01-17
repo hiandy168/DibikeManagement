@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="./css/user.css">
+       	<script type="text/javascript" src="./js/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/react/react.min.js"></script>
+        <script type="text/javascript" src="./js/react/react-dom.min.js"></script>
+        <script type="text/javascript" src="./js/react/browser.min.js"></script>
+       	<script type="text/babel">
+       		$(function(){
+				var UserGist=React.createClass({
+					getInitialState:function(){
+    					return {
+      						detail:[]
+    					}
+  					},
+					
+					componentDidMount:function(){
+						$.ajax({
+							url:'/DibikeManagement/member/findAllMembers.do',
+							data:{
+	        					"number":1,
+	        				},
+							type:'POST',
+      						dataType:'json',
+							async:true,
+							success:function(result){
+								if(status==0){
+									$(result.data[2]).each(function(index,value){
+										var reg =/^[0-9]*$/;
+										if(!reg.test(value.name)){
+											value.name=value.name
+										}else{
+											value.name=''
+										}
+										
+									})
+									
+									
+									this.setState({
+										detail:result.data[2]
+									})
+									
+								}
+							}.bind(this),
+							error:function(result){
+								console.log(result)
+							}
+							
+						})
+					},
+
+					render:function(){
+						return(
+							<table className="uname_bar">
+								<thead>
+									<tr>
+										<th>姓名</th>
+										<th>手机号</th>
+										<th>创建时间</th>
+									</tr>
+							</thead>
+							<tbody>
+								{
+									this.state.detail.map(function(value,index){
+										return (
+											<tr>
+												<td>{value.name}</td>
+												<td>{value.phone}</td>
+												<td>{value.createDate}</td>
+											</tr>
+										)
+									})
+								}
+							</tbody>
+						</table>
+						)
+					}
+				})
+				ReactDOM.render(<UserGist/>,document.querySelector('.example'));
+				
+			})
+       	</script> 
+    </head>
+    <body>
+    	<div class="example">
+    		
+    	</div>
+        
+    </body>
+</html>
