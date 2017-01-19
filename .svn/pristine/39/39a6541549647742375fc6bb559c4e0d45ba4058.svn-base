@@ -67,41 +67,15 @@ public class PushController extends BaseController {
 	@ResponseBody
 	public Result pushMessage(String bikeNO) throws ParseException, IOException{
 		logger.info("-------------后台开始推送消息----------------------------");
-		Result result = new Result();
 		Bike bike=bikeService.findByBikeNO(bikeNO);
-		if(bike == null){
-			result.setStatus("1");
-			result.setMsg("推送失败");
-			return result;
-		}
 //		Bike bike = bikeService.findDeviceid(deviceid);
 		Report_illegal_stop  report=report_illegal_stopService.findByBikeNO(bikeNO);
-		if(report == null){
-			result.setStatus("1");
-			result.setMsg("推送失败");
-			return result;
-		}
 		Journey journey = journeyService.findMB(bike.getMemberID(), bike.getBikeNO());
-		if(journey == null){
-			result.setStatus("1");
-			result.setMsg("推送失败");
-			return result;
-		}
 		//记录当前时间
 		journey.setEndDate(UtilDate.getDateFormatter());
 		String message=IpStatus(bike, UtilDate.getDateFormatter(),report.getLng(),report.getLat());
 		MemberInfo memberInfo = memberInfoService.findByMemberID(bike.getMemberID());
-		if(memberInfo == null){
-			result.setStatus("1");
-			result.setMsg("推送失败");
-			return result;
-		}
 		Bike mbikes = bikeService.findByMemberID(bike.getMemberID());
-		if(mbikes == null){
-			result.setStatus("1");
-			result.setMsg("推送失败");
-			return result;
-		}
 		mbikes.setMemberID("");
 		mbikes.setBank2("");
 		bikeService.upBike(mbikes);
@@ -111,13 +85,16 @@ public class PushController extends BaseController {
 			logger.info(message);
 			System.out.println(message);
 			response.getWriter().println(message);
+			Result result = new Result();
 			result.setStatus("0");
 			result.setMsg("推送成功");
 			return result;
-		} 
-		result.setStatus("1");
-		result.setMsg("推送失败");
-		return result;
+		} else {
+			Result result = new Result();
+			result.setStatus("1");
+			result.setMsg("推送失败");
+			return result;
+		}
 	}
 	
 	

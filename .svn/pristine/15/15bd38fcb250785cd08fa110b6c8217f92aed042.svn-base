@@ -1,0 +1,26 @@
+vm.controller('promotionList',['$scope','$http',function($scope,$http){
+	
+	var id=window.localStorage.getItem("id");
+	
+	$http({
+		method:'POST',
+		params:{
+			"id":id,
+        },
+        url:'/DibikeManagement/report_illegal_stop/check.do',
+		dataType:'json',
+	}).success(function(result){
+		console.log(result.data);
+		$scope.promotion=result.data;
+		
+		
+	}).error(function(result){
+		
+	});
+	
+	$scope.gohistory=function(){
+		localStorage.removeItem("id");
+		history.back();
+	}
+	
+}]);

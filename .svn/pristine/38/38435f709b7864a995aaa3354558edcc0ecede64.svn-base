@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="./css/user.css">
+        <script type="text/javascript" src="./js/jquery.min.js"></script>
+        <script type="text/javascript" src="./js/html5shiv.js"></script>
+        <script type="text/javascript" src="./js/size.js"></script>
+        <script type="text/javascript" src="./js/ng/angular.min.js"></script>
+        <script type="text/javascript">
+        	var vm = angular.module('promotionApp',[]);
+		</script>
+        <script type="text/javascript" src="./js/component/loginout.js"></script>
+        <script type="text/javascript" src="./js/other/promotionList.js"></script>
+	</head>
+    <body ng-app='promotionApp'>
+        <header class="header" ng-include="'./component/header.html'" ng-controller='logList'></header>
+        <section class="main">
+            <div class="container">
+               <section class="pic_box" ng-controller='promotionList'>
+               		<input type="button" class="gohistory" ng-value="'返回'" ng-click="gohistory()"/>
+               		<div class="pic center">
+               			<img ng-src="./img/{{promotion.imgurl}}"/>
+               		</div>
+               		<ul class="promotion">
+						<li>
+							<div ng-bind="'自行车编号'" class="menul"></div>
+							<div ng-bind="promotion.bikeNo" class="menur"></div>
+						</li>
+						<li>
+							<div ng-bind="'所在城市'" class="menul"></div>
+							<div ng-bind="promotion.city" class="menur"></div>
+						</li>
+						<li>
+							<div ng-bind="'详细地址'" class="menul"></div>
+							<div ng-bind="promotion.address" class="menur"></div>
+						</li>
+						<li>
+							<div ng-bind="'经度'" class="menul"></div>
+							<div ng-bind="promotion.lng" class="menur"></div>
+						</li>
+						<li>
+							<div ng-bind="'纬度'" class="menul"></div>
+							<div ng-bind="promotion.lat" class="menur"></div>
+						</li>
+						<li>
+							<div ng-bind="'备注'" class="menul"></div>
+							<div ng-bind="promotion.remark" class="menur"></div>
+						</li>
+						<li>
+							<div ng-bind="'状态'" class="menul"></div>
+							<div ng-bind="promotion.status" class="menur"></div>
+						</li>
+					</ul>
+               </section>
+			</div>
+        </section>
+        <footer class="footer" ng-include="'./component/footer.html'"></footer>
+    </body>
+</html>
