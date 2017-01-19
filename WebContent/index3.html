@@ -19,13 +19,21 @@
   					},
 					
 					componentDidMount:function(){
-						fetch('/DibikeManagement/certification/queryPass.do', {
+						fetch('/DibikeManagement/member/findAllMembers.do',{
 							method: 'POST',
 							mode:'cors',
-      						credentials:'include',
-						}).then(function(response) {
-							response.json().then(function(data){
-          						console.log(data);
+      						credentials:"include",
+							headers: { 
+								'Accept':'application/json',
+								'Content-Type':'application/json' 
+							},
+							body:JSON.stringify({
+								'number':1
+							})
+						}).then(function(response){
+							response.json().then(function(result){
+          						console.log(result.data);
+								
        						});
 						}).catch(function(err) {
 							console.log(err);

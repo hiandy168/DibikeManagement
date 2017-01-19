@@ -7,7 +7,6 @@
         <script type="text/javascript" src="./js/jquery.min.js"></script>
         <script type="text/javascript" src="./js/react/react.min.js"></script>
         <script type="text/javascript" src="./js/react/react-dom.min.js"></script>
-        <script type="text/javascript" src="./js/react/fetch.js"></script>
         <script type="text/javascript" src="./js/react/browser.min.js"></script>
        	<script type="text/babel">
        		$(function(){
@@ -19,17 +18,37 @@
   					},
 					
 					componentDidMount:function(){
-						fetch('/DibikeManagement/certification/queryPass.do', {
-							method: 'POST',
-							mode:'cors',
-      						credentials:'include',
-						}).then(function(response) {
-							response.json().then(function(data){
-          						console.log(data);
-       						});
-						}).catch(function(err) {
-							console.log(err);
-						});
+						$.ajax({
+							url:'/DibikeManagement/member/findAllMembers.do',
+							data:{
+	        					"number":1,
+	        				},
+							type:'POST',
+      						dataType:'json',
+							async:true,
+							success:function(result){
+								if(status==0){
+									$(result.data[2]).each(function(index,value){
+										var reg =/^[0-9]*$/;
+										if(!reg.test(value.name)){
+											value.name=value.name
+										}else{
+											value.name=''
+										}
+										
+									})
+									
+									this.setState({
+										detail:result.data[2]
+									})
+									
+								}
+							}.bind(this),
+							error:function(result){
+								console.log(result)
+							}
+							
+						})
 					},
 
 					render:function(){
@@ -44,7 +63,15 @@
 							</thead>
 							<tbody>
 								{
-									
+									this.state.detail.map(function(value,index){
+										return (
+											<tr>
+												<td>{value.name}</td>
+												<td>{value.phone}</td>
+												<td>{value.createDate}</td>
+											</tr>
+										)
+									})
 								}
 							</tbody>
 						</table>

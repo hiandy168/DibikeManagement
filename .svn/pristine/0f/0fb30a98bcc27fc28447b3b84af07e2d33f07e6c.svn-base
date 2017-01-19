@@ -119,17 +119,7 @@ public class Report_illegal_stopController{
 		return result;
 	}
 	
-	@RequestMapping(value = "/query")
-	@ResponseBody
-	public Result query(){
-		logger.info("-------查询举报违停K------");
-		Result result = new Result();
-		String status = "K";
-		List<Report_illegal_stop> list = report_illegal_stopService.findByStatus(status);
-		result.setData(list);
-		result.setStatus("0");
-		return result;
-	}
+	
 	
 
 }
